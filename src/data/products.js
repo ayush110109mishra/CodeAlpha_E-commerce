@@ -11,6 +11,33 @@ export const CATEGORIES = [
   'Living'
 ]
 
+export const CATEGORY_METADATA = [
+  {
+    name: 'Workstation',
+    tagline: 'Precision tools, anodized docks & tactile desk surfaces',
+    image: 'https://images.unsplash.com/photo-1593062096033-9a26b09da705?auto=format&fit=crop&w=900&q=80',
+    itemCount: 3
+  },
+  {
+    name: 'Audio',
+    tagline: 'High-fidelity acoustic drivers & spatial tuning',
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80',
+    itemCount: 1
+  },
+  {
+    name: 'Carry',
+    tagline: 'Vegetable-tanned leather & weatherproof organizers',
+    image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=900&q=80',
+    itemCount: 2
+  },
+  {
+    name: 'Living',
+    tagline: 'Sculptural ambient lighting & double-walled ceramics',
+    image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80',
+    itemCount: 2
+  }
+]
+
 export const PRODUCTS = [
   {
     id: 'forma-01',
@@ -229,4 +256,8 @@ export function getProductById(id) {
 export function getProductsByCategory(category) {
   if (!category || category === 'All') return PRODUCTS
   return PRODUCTS.filter((product) => product.category.toLowerCase() === category.toLowerCase())
+}
+
+export function getCategoryMetadata() {
+  return CATEGORY_METADATA
 }

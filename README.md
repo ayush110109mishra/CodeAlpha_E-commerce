@@ -1,91 +1,84 @@
-# Forma — Premium Lifestyle & Tech Store
+# Forma — Minimal Lifestyle & Tech Store
 
 > **CodeAlpha Full Stack Development Internship Project**  
-> **Milestone**: Phase 1 — Frontend Foundation & Architecture  
-> **Status**: Checkpoint Complete & Ready for Evaluation
+> **Milestone**: Phase 2 — Premium E-Commerce Visual Experience  
+> **Status**: Art-Directed Visual Experience Complete
 
-Forma is an editorial, minimalist e-commerce storefront crafted for modern lifestyle goods, workstation accessories, and everyday carry pieces. Designed with clean typography, generous whitespace, high-fidelity imagery, muted monochrome neutrals, and responsive layouts.
+Forma is an editorial, minimalist consumer storefront crafted for modern workstation accessories, acoustic devices, and everyday carry pieces. Inspired by the confident product-led aesthetic of Nothing.tech, the tactile material focus of Grovemade, and the restrained clarity of Apple, Forma combines warm ivory surfaces, ink typography, and deliberate art direction.
 
 ---
 
-## 📋 Project Overview & Phase 1 Scope
+## 🎨 Visual Identity & Design Principles
 
-This repository represents **Phase 1 (Project Foundation)** of the CodeAlpha Full Stack Development Internship. The objective of this phase is to establish a robust, maintainable, and scalable frontend architecture without introducing backend complexity or state management prematurely.
+- **Warm Neutral Foundation**: Warm ivory/off-white background (`#fafaf8`), crisp white surfaces, rich ink-black headings (`#111111`), and subtle border dividers (`#eae8e1`).
+- **Editorial Typography**: Pairing of modern sans-serif (`Plus Jakarta Sans`) with elegant serif accents (`Playfair Display`) for headings and philosophical statements.
+- **Micro-Interactions**: Gentle image zoom states, tactile button responses, and smooth category transitions adhering to `prefers-reduced-motion`.
+- **Responsive Architecture**: Fluid adaptation across desktop, tablet, and mobile screens without horizontal overflow.
 
-### Included in Phase 1:
-- Clean Vite + React (JavaScript ES Modules) configuration.
-- Tailwind CSS v4 integration using official `@tailwindcss/vite` tooling.
-- Modular, domain-driven project folder structure.
-- Client-side routing with nested layouts (`MainLayout`, `SiteHeader`, `SiteFooter`).
-- 5 comprehensive page shells: Home, Catalogue, Product Detail, Cart, and 404 Not Found.
-- Centralized mock product dataset with realistic fields, specifications, and query helpers.
-- Fully responsive navigation with desktop links and mobile drawer.
-- Clean production build and zero linting warnings.
+---
+
+## 🧭 Implemented Routes & Visual Layouts
+
+| Route | Component | Highlights of Phase 2 Experience |
+| :--- | :--- | :--- |
+| `/` | `HomePage` | Cinematic campaign hero, 4 category discovery tiles, curated studio drops, signature collection feature "Objects for the in-between", and material craftsmanship statement. |
+| `/products` | `ProductsPage` | Complete catalogue with live sorting (Curated, Price Low-High, Price High-Low, Alphabetical), category filter pills (`?category=...`), and inventory counter. |
+| `/products/:slug` | `ProductDetailPage` | High-fidelity product showcase, interactive quantity counter, technical specifications table, value guarantees, and related studio pairings. |
+| `/cart` | `CartPage` | Genuinely empty shopping bag by default with a clean empty state, accompanied by an isolated "Preview Order Summary Layout" toggle for design review. |
+| `/*` | `NotFoundPage` | Restrained 404 error page with quick links back to the active catalogue. |
 
 ---
 
 ## 🛠️ Technology Stack
 
 - **Build Tool**: [Vite 8](https://vite.dev/) — High-speed modern bundler with Hot Module Replacement (HMR).
-- **Frontend Library**: [React 19](https://react.dev/) — Component-based UI using functional components and hooks.
-- **Language**: JavaScript (ES Modules) — Clean ES6+ syntax without TypeScript overhead for this phase.
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) — Next-generation utility-first CSS via `@tailwindcss/vite`.
-- **Client Routing**: [React Router v7](https://reactrouter.com/) (`react-router-dom`) — Declarative client-side routing with dynamic params.
-- **Iconography**: [Lucide React](https://lucide.dev/) — Minimalist, consistent SVG icons.
-- **Code Quality**: [Oxlint](https://oxc.rs/) — High-performance static analysis and React purity linting.
+- **Frontend Framework**: [React 19](https://react.dev/) — Functional components with hooks.
+- **Language**: JavaScript (ES Modules) — Clean ES6+ syntax without TypeScript overhead.
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) — Integrated via official `@tailwindcss/vite` plugin.
+- **Routing**: [React Router v7](https://reactrouter.com/) (`react-router-dom`) — Declarative client-side routing.
+- **Icons**: [Lucide React](https://lucide.dev/) — Consistent, lightweight line icons.
+- **Linter**: [Oxlint](https://oxc.rs/) — High-speed linting with React purity checks.
 
 ---
 
-## 📂 High-Level Folder Structure
+## 📂 Project Architecture
 
 ```text
 E-commerce codeAlpha/
-├── index.html                   # HTML entry point with web fonts & metadata
-├── package.json                 # Project dependencies and npm scripts
-├── vite.config.js               # Vite configuration with React & Tailwind v4 plugins
-├── .gitignore                   # Excludes dependencies, builds, logs, and env files
+├── index.html                   # HTML entry point with Plus Jakarta Sans & Playfair Display
+├── package.json                 # Project dependencies & npm scripts
+├── vite.config.js               # Vite config with React & Tailwind v4 plugins
+├── .gitignore                   # Excludes node_modules, dist, .env, and sensitive files
 ├── README.md                    # Project documentation
-├── public/                      # Static public assets & favicons
+├── public/                      # Static public assets
 └── src/
     ├── app/
     │   ├── App.jsx              # Root component with RouterProvider
-    │   └── router.jsx           # Central client-side routes & layout hierarchy
+    │   └── router.jsx           # Route declarations with MainLayout nesting
     ├── assets/                  # Static SVGs and imagery
     ├── components/
     │   ├── layout/
-    │   │   ├── MainLayout.jsx   # Global layout shell (Header + Outlet + Footer)
-    │   │   ├── SiteHeader.jsx   # Header with logo, navigation & mobile menu
-    │   │   └── SiteFooter.jsx   # Footer with value pillars and sitemap
+    │   │   ├── MainLayout.jsx   # Global layout shell with ivory background
+    │   │   ├── SiteHeader.jsx   # Slim announcement bar, wordmark & responsive drawer
+    │   │   └── SiteFooter.jsx   # Value pillars, sitemap, and dispatch newsletter
     │   ├── products/
-    │   │   └── ProductCard.jsx  # Reusable card component for catalogue grids
-    │   └── ui/                  # Slot for future UI primitives
+    │   │   └── ProductCard.jsx  # Reusable card with image stage & hover interactions
+    │   └── ui/                  # Reusable UI component slot
     ├── data/
-    │   └── products.js          # Centralized catalogue dataset & query helpers
-    ├── hooks/                   # Custom React hooks (reserved for Phase 2)
+    │   └── products.js          # Centralized catalogue with metadata & query helpers
+    ├── hooks/                   # Custom hooks slot (reserved for future state)
     ├── lib/
-    │   └── utils.js             # Reusable utility functions (`cn`, `formatPrice`)
+    │   └── utils.js             # Formatting (`formatPrice`) & class merging (`cn`)
     ├── pages/
-    │   ├── HomePage.jsx         # Hero banner, category navigation, featured products
-    │   ├── ProductsPage.jsx     # Catalogue with live category filtering
-    │   ├── ProductDetailPage.jsx# Dynamic route for single product specs & details
-    │   ├── CartPage.jsx         # Order summary & bag foundation shell
+    │   ├── HomePage.jsx         # Art-directed hero, categories, studio drops, story
+    │   ├── ProductsPage.jsx     # Catalogue with live sorting & category filter
+    │   ├── ProductDetailPage.jsx# Dynamic route with specifications & pairings
+    │   ├── CartPage.jsx         # Empty cart by default + isolated preview mode
     │   └── NotFoundPage.jsx     # 404 fallback page
     ├── styles/
-    │   └── index.css            # Tailwind CSS v4 import and base typography rules
-    └── main.jsx                 # React root DOM rendering entry point
+    │   └── index.css            # Tailwind CSS v4, warm ivory tokens & reduced motion
+    └── main.jsx                 # DOM entry point
 ```
-
----
-
-## 🧭 Implemented Routes
-
-| Route | Component | Purpose & Description |
-| :--- | :--- | :--- |
-| `/` | `HomePage` | Editorial hero showcase, category tiles, curated studio picks, and design ethos. |
-| `/products` | `ProductsPage` | Full product catalogue with live category filtering via URL search params (`?category=...`). |
-| `/products/:slug` | `ProductDetailPage` | Dynamic route loading individual product specifications, high-res preview, and action shell. |
-| `/cart` | `CartPage` | Shopping bag foundation shell with preview items, calculations, and empty state simulator. |
-| `/*` | `NotFoundPage` | Restrained 404 error page with direct navigation back to active store sections. |
 
 ---
 
@@ -95,46 +88,23 @@ E-commerce codeAlpha/
 
 - **Node.js**: `v18.0.0` or later (tested on `v24.14.1`)
 - **npm**: `v9.0.0` or later (tested on `v11.11.0`)
-- A modern web browser (Chrome, Edge, Firefox, Safari)
+- Modern web browser
 
-### Installation
-
-1. Clone or navigate to the project directory:
-   ```bash
-   cd "E-commerce codeAlpha"
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
----
-
-## 💻 Available Scripts & Commands
+### Development & Build Commands
 
 | Command | Action |
 | :--- | :--- |
-| `npm run dev` | Starts the Vite development server with Hot Module Replacement (HMR) at `http://localhost:5173/` |
-| `npm run build` | Compiles and bundles production-ready assets into the `dist/` directory |
-| `npm run preview` | Locally serves the production build from `dist/` for verification |
-| `npm run lint` | Runs Oxlint across all source files to verify code quality and React purity rules |
+| `npm run dev` | Starts the Vite development server with HMR at `http://localhost:5173/` |
+| `npm run build` | Compiles production-ready bundle into `dist/` |
+| `npm run preview` | Locally serves the production build |
+| `npm run lint` | Runs Oxlint across all source files |
 
 ---
 
-## ⚠️ Current Limitations & Scope Boundaries
+## ⚠️ Current Scope & Limitations
 
-As part of the disciplined milestone roadmap for Phase 1, the following features are intentionally deferred to subsequent phases:
-
-1. **Mock Product Data**: All product data is centralized locally in `src/data/products.js`. No live external REST/GraphQL API or headless CMS is connected yet.
-2. **No Backend or Database**: There is no Express.js/Node.js server, MongoDB, or relational database in this phase.
-3. **No Authentication or User Accounts**: User registration, login, JWT/session management, and profiles are out of scope for Phase 1.
-4. **No Payment Integration**: Checkout payment gateways (Stripe, Razorpay, etc.) are not integrated.
-5. **Cart & Checkout Shell**: The `/cart` page and "Add to Bag" buttons are interactive foundation shells demonstrating UI layout, responsive structure, and order summary math. Full global state management (`useCart` / Context) and checkout transactions will be implemented in Phase 2.
-
----
-
-## 🗺️ Roadmap Ahead
-
-- **Phase 2 (Frontend State & Interactivity)**: Global cart context, persistent local storage, quantity controls, search filtering, and toast notifications.
-- **Phase 3 (Backend Integration)**: Express REST API, MongoDB data models, order processing, and authenticated checkout.
+1. **Centralized Mock Data**: Products and category metadata are stored in `src/data/products.js`. No live external database or REST API is connected in this visual phase.
+2. **No Backend or Database**: Express/Node.js endpoints and MongoDB are deferred to later phases.
+3. **No User Accounts or Auth**: Login, registration, and user profiles are out of scope.
+4. **No Payment Processing**: Payment gateways (Stripe/Razorpay) are not connected.
+5. **Cart State & Persistence**: Cart starts genuinely empty by default. Add to Bag buttons provide simulated feedback. Full persistent global state management (`useCart`) and transaction flows will be wired in future iterations.

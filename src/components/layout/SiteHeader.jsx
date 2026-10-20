@@ -7,53 +7,58 @@ export default function SiteHeader() {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Products', path: '/products' },
-    { name: 'Cart', path: '/cart' },
+    { name: 'Catalogue', path: '/products' },
+    { name: 'Shopping Bag', path: '/cart' },
   ]
 
   const activeClass = ({ isActive }) =>
-    isActive
-      ? 'text-zinc-950 font-medium border-b border-zinc-950 pb-0.5'
-      : 'text-zinc-500 hover:text-zinc-900 transition-colors pb-0.5'
+    `relative py-1 text-xs uppercase tracking-[0.16em] font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900 rounded-xs ${
+      isActive
+        ? 'text-zinc-950 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1.5px] after:bg-zinc-950'
+        : 'text-zinc-500 hover:text-zinc-950'
+    }`
 
   return (
-    <header className="sticky top-0 z-40 bg-zinc-50/90 backdrop-blur-md border-b border-zinc-200/80 transition-all">
-      {/* Editorial Announcement Bar */}
-      <div className="bg-zinc-950 text-zinc-300 text-[11px] uppercase tracking-[0.2em] py-2 px-4 text-center font-medium">
-        Complimentary express courier on orders over $150
+    <header className="sticky top-0 z-40 bg-[#fafaf8]/95 backdrop-blur-md border-b border-[#eae8e1] transition-colors">
+      {/* Slim Understated Announcement Bar */}
+      <div className="bg-[#121212] text-zinc-300 text-[11px] tracking-[0.14em] uppercase py-1.5 px-4 text-center font-normal flex items-center justify-center gap-2">
+        <span>Complimentary carbon-neutral courier on orders over $150</span>
+        <span className="hidden sm:inline text-zinc-500">•</span>
+        <span className="hidden sm:inline text-zinc-400">Two-Year Studio Guarantee</span>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle Button */}
           <div className="flex items-center sm:hidden">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 -ml-2 text-zinc-700 hover:text-zinc-950 focus:outline-none"
+              className="p-2 -ml-2 text-zinc-800 hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900 rounded-sm"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileMenuOpen ? <X size={20} strokeWidth={1.75} /> : <Menu size={20} strokeWidth={1.75} />}
             </button>
           </div>
 
-          {/* Brand Logo */}
-          <div className="flex items-center">
+          {/* Forma Brand Wordmark */}
+          <div className="flex items-center gap-3">
             <Link 
               to="/" 
-              className="text-xl sm:text-2xl font-bold tracking-[0.28em] uppercase text-zinc-950 hover:opacity-80 transition-opacity"
+              className="text-xl sm:text-2xl font-bold tracking-[0.24em] uppercase text-zinc-950 hover:opacity-85 transition-opacity focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900 rounded-xs"
+              aria-label="Forma Home"
             >
               Forma
             </Link>
-            <span className="hidden md:inline-block ml-4 text-[10px] tracking-widest uppercase px-2 py-0.5 border border-zinc-300 text-zinc-500 rounded-full">
-              Studio Edition
+            <span className="hidden md:inline-flex items-center text-[10px] tracking-widest uppercase px-2 py-0.5 border border-[#d8d6ce] text-zinc-600 rounded-full font-medium bg-[#f5f4ed]">
+              Studio
             </span>
           </div>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden sm:flex items-center gap-8 text-xs uppercase tracking-[0.18em]">
+          {/* Desktop Navigation */}
+          <nav aria-label="Main Navigation" className="hidden sm:flex items-center gap-8">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
@@ -66,24 +71,24 @@ export default function SiteHeader() {
             ))}
           </nav>
 
-          {/* Action / Utilities */}
+          {/* Right Action Utilities */}
           <div className="flex items-center gap-4">
             <Link
               to="/products"
-              className="hidden lg:inline-flex items-center gap-1 text-xs uppercase tracking-wider text-zinc-500 hover:text-zinc-900 transition-colors"
+              className="hidden lg:inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-zinc-600 hover:text-zinc-950 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900 rounded-xs"
             >
               <span>Explore Collection</span>
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={13} strokeWidth={1.75} />
             </Link>
 
-            {/* Cart Icon Link */}
+            {/* Cart Link with Restrained Badge */}
             <Link
               to="/cart"
-              className="relative p-2 text-zinc-800 hover:text-zinc-950 transition-colors rounded-full hover:bg-zinc-100"
-              aria-label="Shopping Cart"
+              className="group relative p-2 text-zinc-900 hover:text-zinc-950 transition-colors rounded-full hover:bg-zinc-200/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900"
+              aria-label="View Shopping Bag"
             >
-              <ShoppingBag size={20} strokeWidth={1.75} />
-              <span className="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-zinc-950 text-[10px] font-medium text-white">
+              <ShoppingBag size={20} strokeWidth={1.6} />
+              <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-zinc-950 text-[10px] font-semibold text-white tracking-tighter shadow-xs">
                 0
               </span>
             </Link>
@@ -91,27 +96,30 @@ export default function SiteHeader() {
         </div>
       </div>
 
-      {/* Mobile Dropdown Navigation */}
+      {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="sm:hidden border-b border-zinc-200 bg-zinc-50 px-4 pt-3 pb-6 animate-in slide-in-from-top duration-200">
-          <nav className="flex flex-col space-y-4">
+        <div className="sm:hidden border-b border-[#eae8e1] bg-[#fafaf8] px-5 pt-3 pb-6 animate-in slide-in-from-top-2 duration-200">
+          <nav className="flex flex-col space-y-3">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
-                  isActive
-                    ? 'text-sm font-semibold tracking-wider uppercase text-zinc-950 py-1'
-                    : 'text-sm tracking-wider uppercase text-zinc-600 hover:text-zinc-900 py-1'
+                  `text-sm tracking-wider uppercase py-2 transition-colors ${
+                    isActive
+                      ? 'font-semibold text-zinc-950 border-l-2 border-zinc-950 pl-2'
+                      : 'text-zinc-600 hover:text-zinc-950 pl-2'
+                  }`
                 }
                 end={link.path === '/'}
               >
                 {link.name}
               </NavLink>
             ))}
-            <div className="pt-2 border-t border-zinc-200 text-xs text-zinc-500">
-              Forma Lifestyle & Tech Accessories
+            <div className="pt-3 border-t border-[#eae8e1] flex items-center justify-between text-xs text-zinc-500">
+              <span>Forma Studio Edition</span>
+              <span className="text-[11px] tracking-wider uppercase text-zinc-400">Kyoto • Berlin</span>
             </div>
           </nav>
         </div>

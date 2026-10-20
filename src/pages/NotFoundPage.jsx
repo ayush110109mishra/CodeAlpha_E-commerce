@@ -3,8 +3,8 @@ import { ArrowLeft, Compass } from 'lucide-react'
 
 export default function NotFoundPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-24 sm:py-32 text-center space-y-6">
-      <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-zinc-100 text-zinc-900 border border-zinc-200">
+    <div className="max-w-4xl mx-auto px-4 py-28 sm:py-36 text-center space-y-6">
+      <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#f4f3ed] text-zinc-800 border border-[#eae8e1]">
         <Compass size={24} strokeWidth={1.5} />
       </div>
 
@@ -16,23 +16,23 @@ export default function NotFoundPage() {
           Page Not Located
         </h1>
         <p className="text-xs sm:text-sm text-zinc-500 max-w-md mx-auto leading-relaxed">
-          The destination you requested does not exist or has been relocated within the Forma archive.
+          The requested path does not exist or has been relocated within the Forma studio archive.
         </p>
       </div>
 
       <div className="pt-4 flex flex-wrap justify-center gap-4">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-950 text-white text-xs uppercase tracking-widest font-semibold rounded-xs hover:bg-zinc-800 transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-3 bg-[#121212] text-[#fafaf8] text-xs uppercase tracking-[0.16em] font-semibold rounded-xs hover:bg-black transition-colors"
         >
           <ArrowLeft size={14} />
-          <span>Return Home</span>
+          <span>Return to Home</span>
         </Link>
         <Link
           to="/products"
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-100 text-zinc-900 text-xs uppercase tracking-widest font-semibold rounded-xs hover:bg-zinc-200 transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-3 bg-white text-zinc-900 border border-[#eae8e1] text-xs uppercase tracking-[0.16em] font-semibold rounded-xs hover:bg-[#f4f3ed] transition-colors"
         >
-          <span>Explore Products</span>
+          <span>Explore Catalogue</span>
         </Link>
       </div>
     </div>

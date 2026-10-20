@@ -1,15 +1,68 @@
 @import "tailwindcss";
 
 :root {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --bg-warm: #fafaf8;
+  --text-ink: #111111;
+  --text-muted: #5e5e5b;
+  --border-subtle: #eae8e1;
+  --surface-card: #f4f3ed;
+  --accent-amber: #b45309;
 }
 
-/* Custom scrollbar and utilities for clean editorial aesthetic */
-html {
-  scroll-behavior: smooth;
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-warm);
+  color: var(--text-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-serif-editorial {
+  font-family: var(--font-serif);
+}
+
+/* Cinematic image and hover transition curve (inspired by gallery monographs) */
+.transition-cinematic {
+  transition-property: transform, opacity, filter;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-duration: 650ms;
+}
+
+/* Smooth scrolling with reduced-motion support */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 ::selection {
-  background-color: #18181b;
-  color: #fafafa;
+  background-color: #111111;
+  color: #fafaf8;
+}
+
+/* Subtle editorial scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fafaf8;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4ce;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a2;
 }
