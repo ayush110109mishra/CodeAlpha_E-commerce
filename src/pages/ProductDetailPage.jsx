@@ -24,13 +24,13 @@ export default function ProductDetailPage() {
     return (
       <div className="max-w-4xl mx-auto px-4 py-28 text-center space-y-6">
         <span className="text-xs uppercase tracking-[0.25em] text-zinc-400 font-semibold block">
-          Studio Archive
+          Forma Store
         </span>
         <h1 className="text-3xl font-semibold text-zinc-950">
-          Piece Not Located
+          Product Not Found
         </h1>
         <p className="text-xs sm:text-sm text-zinc-500 max-w-md mx-auto leading-relaxed">
-          The requested design reference may have been archived or the URL has expired. Explore our active catalogue to view current studio pieces.
+          The requested product could not be found or may have been updated. Browse our catalogue to view currently available items.
         </p>
         <div className="pt-2">
           <Link
@@ -38,7 +38,7 @@ export default function ProductDetailPage() {
             className="inline-flex items-center gap-2 px-5 py-3 bg-[#121212] text-[#fafaf8] text-xs uppercase tracking-widest font-semibold rounded-xs hover:bg-black transition-colors"
           >
             <ArrowLeft size={14} />
-            <span>Back to Catalogue</span>
+            <span>Back to Products</span>
           </Link>
         </div>
       </div>
@@ -71,7 +71,7 @@ export default function ProductDetailPage() {
           <span>Back to Catalogue</span>
         </Link>
 
-        {/* Editorial Breadcrumbs */}
+        {/* Breadcrumbs */}
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-zinc-400">
           <Link to="/" className="hover:text-zinc-950 transition-colors">
             Home
@@ -81,7 +81,7 @@ export default function ProductDetailPage() {
             Catalogue
           </Link>
           <span>/</span>
-          <Link to={`/products?category=${product.category}`} className="hover:text-zinc-950 transition-colors">
+          <Link to={`/products?category=${encodeURIComponent(product.category)}`} className="hover:text-zinc-950 transition-colors">
             {product.category}
           </Link>
           <span>/</span>
@@ -104,8 +104,8 @@ export default function ProductDetailPage() {
             />
           </div>
           <div className="flex items-center justify-between text-[11px] text-zinc-400 px-1">
-            <span>Official Studio Reference Photography</span>
-            <span>Ref: {product.id}</span>
+            <span>Product Photography</span>
+            <span>Item: {product.id}</span>
           </div>
         </div>
 
@@ -116,7 +116,7 @@ export default function ProductDetailPage() {
           <div>
             <div className="flex items-center justify-between">
               <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-zinc-500">
-                {product.category} Series
+                {product.category}
               </span>
               <span className="inline-flex items-center gap-1.5 text-[11px] text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
@@ -158,11 +158,11 @@ export default function ProductDetailPage() {
             </p>
           </div>
 
-          {/* Key Engineering Features */}
+          {/* Key Features */}
           {product.features && product.features.length > 0 && (
             <div className="space-y-2.5 pt-2">
               <h3 className="text-xs uppercase tracking-wider font-semibold text-zinc-900">
-                Engineering Highlights
+                Key Features
               </h3>
               <ul className="space-y-2">
                 {product.features.map((feature, idx) => (
@@ -175,7 +175,7 @@ export default function ProductDetailPage() {
             </div>
           )}
 
-          {/* Technical Specifications */}
+          {/* Specifications */}
           {product.specs && (
             <div className="space-y-2.5 pt-3 border-t border-[#eae8e1]">
               <h3 className="text-xs uppercase tracking-wider font-semibold text-zinc-900">
@@ -195,7 +195,7 @@ export default function ProductDetailPage() {
           {/* Quantity & Add to Bag Block */}
           <div className="space-y-3 pt-4 border-t border-[#eae8e1]">
             <div className="flex items-center gap-3">
-              {/* Refined Quantity Counter */}
+              {/* Quantity Stepper */}
               <div className="flex items-center border border-[#eae8e1] rounded-xs bg-white shadow-2xs">
                 <button
                   type="button"
@@ -246,23 +246,26 @@ export default function ProductDetailPage() {
             )}
 
             <p className="text-[11px] text-zinc-400 text-center">
-              Ships in plastic-free recycled pulp packaging with tracking.
+              Standard courier delivery with tracking across India. Free shipping over ₹4,999.
             </p>
           </div>
 
-          {/* Guarantees Strip */}
+          {/* Guarantees & Perks Strip */}
           <div className="pt-2 grid grid-cols-3 gap-2 text-center">
             <div className="p-2.5 bg-white border border-[#eae8e1] rounded-xs space-y-1 shadow-2xs">
               <Truck size={15} className="mx-auto text-zinc-700" />
-              <div className="text-[10px] font-medium text-zinc-800">Free Courier</div>
+              <div className="text-[10px] font-medium text-zinc-800">Free Delivery</div>
+              <div className="text-[9px] text-zinc-400">Over ₹4,999</div>
             </div>
             <div className="p-2.5 bg-white border border-[#eae8e1] rounded-xs space-y-1 shadow-2xs">
               <ShieldCheck size={15} className="mx-auto text-zinc-700" />
-              <div className="text-[10px] font-medium text-zinc-800">2-Year Warranty</div>
+              <div className="text-[10px] font-medium text-zinc-800">Verified Quality</div>
+              <div className="text-[9px] text-zinc-400">Inspected Items</div>
             </div>
             <div className="p-2.5 bg-white border border-[#eae8e1] rounded-xs space-y-1 shadow-2xs">
               <RotateCcw size={15} className="mx-auto text-zinc-700" />
-              <div className="text-[10px] font-medium text-zinc-800">30-Day Evaluation</div>
+              <div className="text-[10px] font-medium text-zinc-800">30-Day Returns</div>
+              <div className="text-[9px] text-zinc-400">Easy Exchanges</div>
             </div>
           </div>
 
@@ -270,23 +273,23 @@ export default function ProductDetailPage() {
 
       </div>
 
-      {/* Recommended Studio Pairings */}
+      {/* Recommended Products */}
       {relatedProducts.length > 0 && (
         <section className="pt-12 border-t border-[#eae8e1] space-y-6">
           <div className="flex items-center justify-between">
             <div>
               <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-zinc-400">
-                Complete the Space
+                Recommendations
               </span>
               <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-zinc-950 mt-0.5">
-                Studio Pairings
+                More to Explore
               </h2>
             </div>
             <Link
               to={backToCatalogueUrl}
               className="text-xs uppercase tracking-wider font-medium text-zinc-600 hover:text-zinc-950"
             >
-              All Pieces
+              All Products
             </Link>
           </div>
 

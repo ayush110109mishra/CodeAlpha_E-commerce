@@ -1,18 +1,31 @@
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Plus, Check } from 'lucide-react'
 import { formatPrice } from '../../lib/utils'
+import { useCart } from '../../context/CartContext'
 
 /**
- * Editorial Product Card
- * Product-led presentation with restrained typography, crisp image stage, and smooth microinteractions.
- * Preserves the current browsing context (category filters, sort order) in navigation state.
+ * Forma Product Card
+ * Clean e-commerce product card with product imagery, clear pricing in INR,
+ * working detail links, and an integrated quick add-to-cart action.
  */
 export default function ProductCard({ product, customFrom }) {
   const location = useLocation()
+  const { addToCart } = useCart()
+  const [isAdded, setIsAdded] = useState(false)
+
   if (!product) return null
 
   // Capture current path and query parameters to preserve user browsing context
   const currentPathWithSearch = customFrom || (location.pathname + location.search)
+
+  const handleQuickAdd = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    addToCart(product, 1)
+    setIsAdded(true)
+    setTimeout(() => setIsAdded(false), 1800)
+  }
 
   return (
     <article className="group relative flex flex-col bg-white border border-[#eae8e1] rounded-xs overflow-hidden hover:border-zinc-400/80 hover:shadow-xs transition-all duration-300">
@@ -42,11 +55,9 @@ export default function ProductCard({ product, customFrom }) {
           <span className="text-[10px] uppercase tracking-[0.18em] font-medium text-zinc-500">
             {product.category}
           </span>
-          {product.specs?.Origin && (
-            <span className="text-[10px] text-zinc-400 truncate max-w-[120px] text-right">
-              {product.specs.Origin.replace('Crafted in ', '').replace('Artisan handcrafted in ', '')}
-            </span>
-          )}
+          <span className="text-[10px] text-zinc-400 font-medium">
+            {product.inStock ? 'In Stock' : 'Out of Stock'}
+          </span>
         </div>
 
         <h3 className="text-sm font-semibold text-zinc-950 group-hover:text-zinc-600 transition-colors line-clamp-1">
@@ -64,7 +75,7 @@ export default function ProductCard({ product, customFrom }) {
         </p>
 
         {/* Price & Action Row */}
-        <div className="mt-4 pt-3 border-t border-[#f0eee6] flex items-center justify-between">
+        <div className="mt-4 pt-3 border-t border-[#f0eee6] flex items-center justify-between gap-2">
           <div className="flex items-baseline gap-2">
             <span className="text-sm font-semibold text-zinc-950 tabular-nums">
               {formatPrice(product.price)}
@@ -76,13 +87,30 @@ export default function ProductCard({ product, customFrom }) {
             )}
           </div>
 
-          <Link
-            to={`/products/${product.slug}`}
-            state={{ from: currentPathWithSearch }}
-            className="text-xs font-medium text-zinc-800 hover:text-zinc-950 hover:underline underline-offset-4 transition-colors"
-          >
-            Details
-          </Link>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={handleQuickAdd}
+              className={`inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1.5 rounded-xs transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 ${
+                isAdded
+                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                  : 'bg-zinc-900 text-white hover:bg-black'
+              }`}
+              aria-label={`Add ${product.name} to bag`}
+            >
+              {isAdded ? (
+                <>
+                  <Check size={12} className="stroke-[2.5]" />
+                  <span>Added</span>
+                </>
+              ) : (
+                <>
+                  <Plus size={12} className="stroke-[2.5]" />
+                  <span>Add</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </article>

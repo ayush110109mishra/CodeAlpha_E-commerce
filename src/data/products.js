@@ -1,56 +1,50 @@
 /**
- * Forma — Mock Product Catalogue
- * Centralized dataset representing premium lifestyle & tech accessories.
+ * Forma — Product Catalogue
+ * Centralized dataset representing modern everyday essentials, tech accessories & lifestyle goods.
  * All prices denominated in Indian Rupees (INR) for India-ready storefront.
  */
 
 export const CATEGORIES = [
   'All',
-  'Workstation',
-  'Audio',
-  'Carry',
-  'Living'
+  'Tech & Audio',
+  'Bags & Accessories',
+  'Home Essentials'
 ]
 
 export const CATEGORY_METADATA = [
   {
-    name: 'Workstation',
-    tagline: 'Precision tools, anodized docks & tactile desk surfaces',
-    image: 'https://images.unsplash.com/photo-1593062096033-9a26b09da705?auto=format&fit=crop&w=900&q=80'
-  },
-  {
-    name: 'Audio',
-    tagline: 'High-fidelity acoustic drivers & spatial tuning',
+    name: 'Tech & Audio',
+    tagline: 'Keyboards, desk accessories, headphones & audio gear',
     image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80'
   },
   {
-    name: 'Carry',
-    tagline: 'Vegetable-tanned leather & weatherproof organizers',
+    name: 'Bags & Accessories',
+    tagline: 'Laptop sleeves, commuter backpacks, organizers & wallets',
     image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=900&q=80'
   },
   {
-    name: 'Living',
-    tagline: 'Sculptural ambient lighting & double-walled ceramics',
+    name: 'Home Essentials',
+    tagline: 'Ambient desk lighting, stoneware tumblers & catchall trays',
     image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80'
   }
 ]
 
 export const PRODUCTS = [
-  // --- WORKSTATION ---
+  // --- TECH & AUDIO ---
   {
     id: 'forma-01',
     slug: 'komorebi-mechanical-keyboard',
     name: 'Komorebi Mechanical Keyboard',
     tagline: 'Milled aluminum chassis with silent tactile keystrokes',
-    category: 'Workstation',
+    category: 'Tech & Audio',
     price: 18900,
     originalPrice: 21900,
     image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1200&q=80',
-    description: 'Precision-machined from a single block of aerospace aluminum. Features factory-lubricated silent tactile switches, double-shot PBT keycaps, and seamless Bluetooth 5.2 multipoint pairing.',
+    description: 'Precision-machined aluminum chassis. Features factory-lubricated silent tactile switches, double-shot PBT keycaps, and seamless Bluetooth 5.2 multipoint pairing.',
     features: [
-      'CNC anodized unibody aluminum case',
+      'Anodized unibody aluminum case',
       'Hot-swappable PCB with south-facing RGB',
-      'Acoustic gasket mount with multi-layer dampening foam',
+      'Gasket mount with multi-layer dampening foam',
       'Multi-device pairing with quick toggle'
     ],
     specs: {
@@ -67,7 +61,7 @@ export const PRODUCTS = [
     slug: 'atlas-magsafe-desk-stand',
     name: 'Atlas MagSafe Desk Stand',
     tagline: 'Solid micro-suction base with 360-degree rotation',
-    category: 'Workstation',
+    category: 'Tech & Audio',
     price: 4800,
     originalPrice: null,
     image: 'https://images.unsplash.com/photo-1586105251261-72a756497a11?auto=format&fit=crop&w=1200&q=80',
@@ -91,22 +85,22 @@ export const PRODUCTS = [
     id: 'forma-06',
     slug: 'sylvan-solid-walnut-desk-mat',
     name: 'Sylvan Walnut Desk Mat',
-    tagline: 'Sustainably harvested American walnut with cork underlay',
-    category: 'Workstation',
+    tagline: 'Hardwood veneer desk surface with natural cork underlay',
+    category: 'Tech & Audio',
     price: 5600,
     originalPrice: 6400,
     image: 'https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=1200&q=80',
-    description: 'A tactile workspace canvas that grounds your desk setup. Layered with natural water-resistant oil treatment and backed by high-density Portuguese cork.',
+    description: 'A smooth workspace surface that grounds your desk setup. Layered with water-resistant oil treatment and backed by high-density cork for stability.',
     features: [
-      'Flexible real hardwood veneer construction',
+      'Smooth hardwood veneer construction',
       'High-traction acoustic dampening cork backing',
       'Gentle beveled edges for comfortable forearm rest',
-      'Natural grain variation makes every piece one-of-a-kind'
+      'Natural grain variation across each piece'
     ],
     specs: {
       Dimensions: '900 × 400 × 3.5 mm',
       Weight: '720 g',
-      Origin: 'Crafted in Portland, Oregon'
+      Finish: 'Natural protective oil coating'
     },
     featured: false,
     inStock: true
@@ -115,50 +109,48 @@ export const PRODUCTS = [
     id: 'forma-09',
     slug: 'apex-precision-trackball',
     name: 'Apex Precision Trackball',
-    tagline: 'Sculpted aluminum wireless trackball with fluid optical bearings',
-    category: 'Workstation',
+    tagline: 'Sculpted wireless trackball with fluid optical bearings',
+    category: 'Tech & Audio',
     price: 7400,
     originalPrice: 8500,
     image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=1200&q=80',
-    description: 'Ergonomically sculpted at an 18-degree tilt angle to relieve forearm strain during prolonged design and editing sessions. Precision synthetic ruby bearings provide frictionless glide.',
+    description: 'Ergonomically sculpted at an 18-degree tilt angle to relieve forearm strain during prolonged work sessions. Precision synthetic bearings provide smooth glide.',
     features: [
-      'Synthetic ruby bearing cup for near-frictionless rotation',
+      'Low-friction synthetic bearing cup for smooth rotation',
       'High-resolution 4,000 DPI adjustable optical sensor',
-      'USB-C quick charge with 90-day battery stamina',
+      'USB-C quick charge with extended battery life',
       'Low-latency 2.4GHz and Bluetooth dual-channel connectivity'
     ],
     specs: {
       Dimensions: '135 × 100 × 51 mm',
       Weight: '215 g',
-      Sensor: 'PixArt PMW3360 Optical',
+      Sensor: 'PixArt Optical Sensor',
       Angle: '18-degree natural handshake tilt'
     },
     featured: false,
     inStock: true
   },
-
-  // --- AUDIO ---
   {
     id: 'forma-02',
     slug: 'studio-monolith-wireless-headphones',
     name: 'Studio Monolith Headphones',
-    tagline: 'Brushed magnesium frame with spatial acoustic clarity',
-    category: 'Audio',
+    tagline: 'Over-ear wireless headphones with active noise cancellation',
+    category: 'Tech & Audio',
     price: 24500,
     originalPrice: 28000,
     image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80',
-    description: 'Designed for quiet concentration and refined sonic fidelity. Custom 40mm beryllium drivers deliver deep, textured sub-bass and pristine treble without artificial coloration.',
+    description: 'Designed for quiet concentration and clear sound reproduction. Custom 40mm dynamic drivers deliver deep bass and clear treble across genres.',
     features: [
-      'Custom 40mm tuned beryllium dynamic drivers',
+      'Custom 40mm tuned dynamic drivers',
       'Adaptive active hybrid noise cancellation',
-      'Perforated lambskin memory foam ear cushions',
-      'Tactile rotary crown for volume and ANC blend'
+      'Soft memory foam ear cushions for long listening sessions',
+      'Tactile rotary crown for volume and ANC control'
     ],
     specs: {
       Weight: '275 g',
-      Playback: '38 hours on single charge',
-      Frequency: '10 Hz – 40,000 Hz',
-      Codecs: 'LDAC, AAC, aptX Adaptive'
+      Playback: 'Up to 38 hours on single charge',
+      Frequency: '20 Hz – 20,000 Hz',
+      Codecs: 'AAC, SBC, aptX'
     },
     featured: true,
     inStock: true
@@ -166,24 +158,24 @@ export const PRODUCTS = [
   {
     id: 'forma-10',
     slug: 'sonus-brass-desktop-monitors',
-    name: 'Sonus Brass Studio Monitors',
-    tagline: 'Pair of nearfield acoustic monitors with spun brass waveguides',
-    category: 'Audio',
+    name: 'Sonus Desktop Studio Monitors',
+    tagline: 'Pair of compact powered nearfield desktop monitors',
+    category: 'Tech & Audio',
     price: 32000,
     originalPrice: 36500,
     image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=1200&q=80',
-    description: 'Desktop reference audio engineered with acoustic chamber dampening. Spun brass waveguides produce pinpoint soundstaging, while woven Kevlar woofers ensure linear midrange detail.',
+    description: 'Desktop reference audio engineered with acoustic chamber dampening. Custom waveguides produce clear stereo imaging and accurate midrange detail.',
     features: [
-      'Custom 1-inch silk dome tweeter with spun brass horn',
-      '4-inch woven Kevlar low-frequency composite transducer',
+      'Custom 1-inch silk dome tweeter with acoustic horn',
+      '4-inch composite transducer for punchy low-end',
       'Integrated Class-D 80W RMS bi-amplification',
-      'Optical, RCA, and balanced TRS studio inputs'
+      'Optical, RCA, and balanced TRS inputs'
     ],
     specs: {
       FrequencyResponse: '48 Hz – 22,000 Hz',
       Dimensions: '210 × 140 × 175 mm each',
       Weight: '6.4 kg (pair)',
-      Enclosure: 'High-density MDF with solid ash baffles'
+      Enclosure: 'High-density acoustic enclosure'
     },
     featured: true,
     inStock: true
@@ -192,22 +184,22 @@ export const PRODUCTS = [
     id: 'forma-11',
     slug: 'vektor-titanium-anc-earbuds',
     name: 'Vektor Titanium ANC Earbuds',
-    tagline: 'Milled aerospace titanium housing with active transparency',
-    category: 'Audio',
+    tagline: 'Machined titanium housing with active transparency',
+    category: 'Tech & Audio',
     price: 14500,
     originalPrice: 16900,
     image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=1200&q=80',
-    description: 'Compact listening instruments milled from Grade 5 titanium. Engineered with dual-feedforward microphones for wind-shielded noise cancellation and pure, natural vocal reproduction.',
+    description: 'Compact wireless earbuds housed in lightweight titanium. Features dual microphones for clear calls, active noise cancellation, and balanced sound reproduction.',
     features: [
-      'Grade 5 CNC titanium acoustic enclosures',
-      'IPX5 sweat and rainfall weather resistance',
-      'Wireless Qi charging aluminum storage dock',
+      'Machined titanium acoustic enclosures',
+      'IPX5 sweat and splash water resistance',
+      'Wireless Qi charging compact storage dock',
       'Multipoint pairing across laptop and mobile'
     ],
     specs: {
       Weight: '5.2 g per earbud',
-      BatteryLife: '8 hours (32 hours total with case)',
-      Driver: '10mm carbon-graphene diaphragm'
+      BatteryLife: '8 hours (32 hours total with charging case)',
+      Driver: '10mm dynamic diaphragm'
     },
     featured: false,
     inStock: true
@@ -216,17 +208,17 @@ export const PRODUCTS = [
     id: 'forma-16',
     slug: 'resonance-aluminum-dac-amplifier',
     name: 'Resonance Aluminum DAC',
-    tagline: 'Cast aluminum balanced desktop digital-to-analog converter',
-    category: 'Audio',
+    tagline: 'Balanced desktop digital-to-analog converter and amplifier',
+    category: 'Tech & Audio',
     price: 19800,
     originalPrice: null,
     image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1200&q=80',
-    description: 'Audiophile-grade headphone amplifier and digital converter. Built with dual ESS Sabre PRO DAC chips and a motorized analog potentiometer for zero channel imbalance at whisper levels.',
+    description: 'High-resolution headphone amplifier and digital converter. Built with dual DAC chips and smooth analog potentiometer for clean, low-distortion audio output.',
     features: [
-      'Dual ESS Sabre ES9038Q2M balanced converters',
-      '4.4mm balanced and 6.35mm single-ended headphone outputs',
-      'Bit-perfect 32-bit/768kHz and native DSD512 decoding',
-      'Hefty CNC aluminum chassis blocks electromagnetic interference'
+      'Dual balanced DAC converter chips',
+      '4.4mm balanced and 3.5mm headphone outputs',
+      'High-resolution 32-bit audio decoding',
+      'Sturdy aluminum chassis shields against interference'
     ],
     specs: {
       OutputPower: '1,200 mW into 32 ohms',
@@ -238,27 +230,27 @@ export const PRODUCTS = [
     inStock: true
   },
 
-  // --- CARRY ---
+  // --- BAGS & ACCESSORIES ---
   {
     id: 'forma-03',
     slug: 'folio-leather-laptop-sleeve',
     name: 'Folio Leather Laptop Sleeve',
-    tagline: 'Vegetable-tanned Italian leather with magnetic closure',
-    category: 'Carry',
+    tagline: 'Smooth leather sleeve with magnetic closure',
+    category: 'Bags & Accessories',
     price: 7900,
     originalPrice: 8900,
     image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1200&q=80',
-    description: 'Minimalist envelope sleeve crafted from rich Tuscan vachetta leather that develops a unique natural patina over time. Lined with microfiber felt to shield against scratches.',
+    description: 'Minimalist envelope sleeve crafted from smooth genuine leather with soft microfiber lining to protect laptops against scratches.',
     features: [
-      'Full-grain vegetable-tanned Tuscan leather',
-      'Hidden quad-magnet snap closure',
-      'Ultra-soft 3mm bonded microfiber interior',
-      'External slip pocket for notebook or documents'
+      'Smooth genuine leather exterior',
+      'Hidden magnetic snap closure',
+      'Soft microfiber interior lining',
+      'External slip pocket for documents or notebook'
     ],
     specs: {
-      Compatibility: 'MacBook Pro 14" & 16" or similar ultrabooks',
+      Compatibility: 'Laptops up to 14" & 16"',
       Thickness: '7 mm unloaded',
-      Origin: 'Artisan handcrafted in Florence, Italy'
+      Closure: 'Magnetic snap'
     },
     featured: true,
     inStock: true
@@ -267,22 +259,22 @@ export const PRODUCTS = [
     id: 'forma-08',
     slug: 'nomad-ballistic-tech-organizer',
     name: 'Nomad Ballistic Organizer',
-    tagline: 'Weatherproof Cordura case with magnetic fold-out compartments',
-    category: 'Carry',
+    tagline: 'Durable nylon case with fold-out compartments',
+    category: 'Bags & Accessories',
     price: 3900,
     originalPrice: 4500,
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80',
-    description: 'Streamline your daily essentials. Built with ultra-durable 1680D ballistic nylon to house power adapters, styluses, memory cards, and charging cables with military-grade resilience.',
+    description: 'Streamline your daily gear. Built with durable 1680D nylon to organize power adapters, styluses, memory cards, and charging cables with dependable everyday protection.',
     features: [
-      '1680D water-repellent ballistic nylon exterior',
-      'Waterproof YKK Aquaguard taped zippers',
-      'Origami-style fold-out interior organization',
-      'External quick-grab passport/phone slip'
+      'Durable 1680D water-repellent nylon exterior',
+      'Smooth weather-resistant zippers',
+      'Fold-out interior elastic loops and mesh dividers',
+      'External quick-grab slip pocket'
     ],
     specs: {
       Dimensions: '230 × 140 × 65 mm',
       Weight: '220 g',
-      Zippers: 'YKK Aquaguard matte finish'
+      Zippers: 'Matte water-resistant zippers'
     },
     featured: false,
     inStock: true
@@ -290,18 +282,18 @@ export const PRODUCTS = [
   {
     id: 'forma-12',
     slug: 'atelier-leather-card-wallet',
-    name: 'Atelier Minimalist Card Wallet',
-    tagline: 'Beveled vegetable-tanned bridle leather with RFID shield',
-    category: 'Carry',
+    name: 'Atelier Leather Card Wallet',
+    tagline: 'Slim leather cardholder with RFID-blocking pocket',
+    category: 'Bags & Accessories',
     price: 3400,
     originalPrice: null,
     image: 'https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=1200&q=80',
-    description: 'Pocket-sized leather engineering. Cut from full-grain bridle leather with beveled, wax-burnished edges. Accommodates up to 8 cards and folded currency with zero pocket bulk.',
+    description: 'Pocket-sized cardholder cut from durable smooth leather with clean, burnished edges. Accommodates up to 8 cards and folded currency with minimal pocket bulk.',
     features: [
-      'Saddle-stitched by hand with waxed linen thread',
-      'Central slot for quick-draw primary currency',
-      'Integrated aerospace aluminum RFID-blocking core',
-      'Deep aniline dye develops rich individualized patina'
+      'Reinforced perimeter stitching',
+      'Central pocket for folded currency',
+      'Integrated aluminum RFID-blocking shield',
+      'Multiple quick-access card slots'
     ],
     specs: {
       Dimensions: '100 × 70 × 6 mm',
@@ -315,17 +307,17 @@ export const PRODUCTS = [
     id: 'forma-15',
     slug: 'meridian-waxed-canvas-duffle',
     name: 'Meridian Waxed Canvas Weekender',
-    tagline: 'Weatherproof Scottish canvas duffle with bridle leather handles',
-    category: 'Carry',
+    tagline: 'Durable waxed canvas duffle with sturdy leather handles',
+    category: 'Bags & Accessories',
     price: 13500,
     originalPrice: 15500,
     image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=80',
-    description: 'An enduring weekend companion built for transit. Heavyweight paraffin-waxed cotton sheds rainfall, while solid brass hardware and continuous leather handle wraps ensure decades of resilience.',
+    description: 'A dependable travel duffle built for weekend trips and daily transit. Heavyweight waxed cotton sheds light moisture, while solid brass hardware and reinforced leather handles offer everyday durability.',
     features: [
-      '18oz Scottish paraffin-waxed cotton canvas',
-      'Solid forged brass hardware and rivets',
-      'Padded internal 16-inch laptop compartment',
-      'Removable wide-webbing shoulder strap with leather pad'
+      'Heavyweight water-resistant waxed cotton canvas',
+      'Solid brass hardware and reinforced rivets',
+      'Padded internal 15-inch laptop compartment',
+      'Removable wide-webbing shoulder strap'
     ],
     specs: {
       Capacity: '38 Litres (Overnight / Weekender)',
@@ -336,21 +328,21 @@ export const PRODUCTS = [
     inStock: true
   },
 
-  // --- LIVING ---
+  // --- HOME ESSENTIALS ---
   {
     id: 'forma-05',
     slug: 'oblique-ceramic-coffee-tumbler',
     name: 'Oblique Ceramic Tumbler',
-    tagline: 'Double-walled stoneware with matte graphite glaze',
-    category: 'Living',
+    tagline: 'Double-walled ceramic tumbler with matte finish',
+    category: 'Home Essentials',
     price: 2400,
     originalPrice: null,
     image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=80',
-    description: 'Hand-thrown aesthetic meets thermal innovation. Keeps your pour-over or matcha piping hot for hours without the metallic taste of stainless steel.',
+    description: 'Double-walled ceramic mug that keeps coffee or tea hot while staying comfortable to hold. Features a smooth glazed interior and secure travel lid.',
     features: [
       'Double-wall insulated ceramic construction',
-      'Pure taste guarantee — non-reactive glazed interior',
-      'Splash-resistant Tritan lid with silicone ring seal',
+      'Non-reactive glazed interior',
+      'Splash-resistant lid with silicone seal',
       'Fits standard automotive cup holders'
     ],
     specs: {
@@ -365,22 +357,22 @@ export const PRODUCTS = [
     id: 'forma-07',
     slug: 'strata-ambient-desk-lamp',
     name: 'Strata Ambient Desk Lamp',
-    tagline: 'Solid brass column with frosted 2700K diffuser',
-    category: 'Living',
+    tagline: 'Brass desk lamp with warm 2700K diffuser',
+    category: 'Home Essentials',
     price: 11200,
     originalPrice: null,
     image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1200&q=80',
-    description: 'Sculptural accent lighting designed for late-night creativity. Stepless brass knurled dial lets you calibrate light temperature from a candle-like amber glow to focused daylight.',
+    description: 'Sculptural accent lighting designed for your desk or nightstand. Stepless knurled dial lets you calibrate light intensity from an ambient amber glow to focused warm white.',
     features: [
-      'Solid machined brass base with raw finish patina',
-      'Mouth-blown opaline frosted glass diffuser',
-      'Touch-sensitive stepless dimmer control',
-      '95+ CRI warm white LED array'
+      'Solid brass base with protective finish',
+      'Frosted glass diffuser for soft ambient light',
+      'Stepless rotary dimmer control',
+      'Energy-efficient warm white LED array'
     ],
     specs: {
-      Power: 'USB-C rechargeable & direct wall power',
+      Power: 'USB-C rechargeable & direct power adapter',
       Dimensions: '130 mm diameter × 260 mm height',
-      LumenOutput: '450 lm peak'
+      ColorTemp: '2700K warm white'
     },
     featured: false,
     inStock: true
@@ -389,16 +381,16 @@ export const PRODUCTS = [
     id: 'forma-13',
     slug: 'kanso-anodized-catchall-tray',
     name: 'Kanso Anodized Catchall',
-    tagline: 'Bead-blasted aluminum organizer with micro-suction feet',
-    category: 'Living',
+    tagline: 'Machined aluminum organizer tray with non-slip silicone feet',
+    category: 'Home Essentials',
     price: 2800,
     originalPrice: null,
     image: 'https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=1200&q=80',
-    description: 'A dedicated sanctuary for your everyday carry. Milled with gentle ergonomic concavities to nest your keys, watch, rings, and fountain pen in harmonious order.',
+    description: 'A dedicated tray for your daily carry. Precision-machined with gentle compartments to keep keys, watch, wallet, and stationery in order.',
     features: [
-      'CNC machined from solid 6000-series billet aluminum',
-      'Bead-blasted satin anodized finish resists micro-scratches',
-      'Underside silicone dampening feet prevent desk scuffs',
+      'Machined from solid aluminum',
+      'Smooth satin anodized finish resists micro-scratches',
+      'Underside silicone feet prevent surface slipping',
       'Calibrated partition wells for watches and eyewear'
     ],
     specs: {
@@ -413,27 +405,40 @@ export const PRODUCTS = [
     id: 'forma-14',
     slug: 'kyoto-stoneware-teapot',
     name: 'Kyoto Stoneware Teapot & Cup Set',
-    tagline: 'Handcrafted Banko-yaki clay brewing teapot with precision infuser',
-    category: 'Living',
+    tagline: 'Ceramic brewing teapot with stainless steel infuser',
+    category: 'Home Essentials',
     price: 4200,
     originalPrice: 4800,
     image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=1200&q=80',
-    description: 'Centuries of Japanese ceramic mastery condensed for your daily desk ritual. High-iron clay softens water astringency, producing smoother green and oolong tea extractions.',
+    description: 'Classic ceramic teapot designed for your daily routine. Features an integrated fine-mesh stainless steel infuser for whole-leaf green and herbal teas.',
     features: [
-      'Handcrafted natural unglazed Banko-yaki purple clay',
-      'Laser-perforated stainless steel micro-mesh basket',
-      'Heat-resistant carved cedar handle grip',
-      'Includes two matching double-walled sipping cups'
+      'Matte glazed stoneware ceramic body',
+      'Fine stainless steel micro-mesh infuser basket',
+      'Heat-resistant wooden handle grip',
+      'Includes two matching double-walled cups'
     ],
     specs: {
       PotCapacity: '450 ml',
       CupCapacity: '80 ml each',
-      Origin: 'Yokkaichi, Mie Prefecture, Japan'
+      Material: 'Stoneware ceramic & stainless steel'
     },
     featured: false,
     inStock: true
   }
 ]
+
+/**
+ * Normalizes category values to ensure full backward compatibility
+ * with legacy queries (Workstation, Audio, Carry, Living).
+ */
+export function normalizeCategory(category) {
+  if (!category || category.toLowerCase() === 'all') return 'All'
+  const c = category.toLowerCase().trim()
+  if (c === 'tech & audio' || c === 'workstation' || c === 'audio' || c === 'tech') return 'Tech & Audio'
+  if (c === 'bags & accessories' || c === 'carry' || c === 'bags' || c === 'accessories') return 'Bags & Accessories'
+  if (c === 'home essentials' || c === 'living' || c === 'home') return 'Home Essentials'
+  return category
+}
 
 // Query helper functions
 export function getAllProducts() {
@@ -453,12 +458,13 @@ export function getProductById(id) {
 }
 
 export function getProductsByCategory(category) {
-  if (!category || category === 'All') return PRODUCTS
-  return PRODUCTS.filter((product) => product.category.toLowerCase() === category.toLowerCase())
+  const normalized = normalizeCategory(category)
+  if (normalized === 'All') return PRODUCTS
+  return PRODUCTS.filter((product) => product.category.toLowerCase() === normalized.toLowerCase())
 }
 
 /**
- * Returns category metadata with live dynamic item counts reflecting the catalogue
+ * Returns category metadata with dynamic item counts reflecting the catalogue
  */
 export function getCategoryMetadata() {
   return CATEGORY_METADATA.map((cat) => ({

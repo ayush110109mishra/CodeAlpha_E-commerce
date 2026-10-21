@@ -7,7 +7,7 @@ export default function SiteFooter() {
   return (
     <footer className="bg-[#121212] text-zinc-400 border-t border-zinc-800/80 mt-auto">
       
-      {/* Editorial Value Pillars */}
+      {/* Customer Service Pillars */}
       <div className="border-b border-zinc-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -17,10 +17,10 @@ export default function SiteFooter() {
               </div>
               <div className="space-y-1">
                 <h4 className="text-xs uppercase tracking-[0.16em] font-semibold text-zinc-200">
-                  Global Express Courier
+                  Express Delivery
                 </h4>
                 <p className="text-xs text-zinc-400 leading-relaxed">
-                  Fast, tracked door-to-door delivery with carbon-neutral transit on all studio pieces.
+                  Fast, tracked door-to-door courier delivery across India. Free on orders over ₹4,999.
                 </p>
               </div>
             </div>
@@ -31,10 +31,10 @@ export default function SiteFooter() {
               </div>
               <div className="space-y-1">
                 <h4 className="text-xs uppercase tracking-[0.16em] font-semibold text-zinc-200">
-                  Two-Year Studio Guarantee
+                  Quality Assurance
                 </h4>
                 <p className="text-xs text-zinc-400 leading-relaxed">
-                  Precision-built to endure daily wear with uncompromised metals and artisan materials.
+                  Carefully selected products designed for reliable, enjoyable everyday use.
                 </p>
               </div>
             </div>
@@ -45,10 +45,10 @@ export default function SiteFooter() {
               </div>
               <div className="space-y-1">
                 <h4 className="text-xs uppercase tracking-[0.16em] font-semibold text-zinc-200">
-                  30-Day Workspace Trial
+                  30-Day Easy Returns
                 </h4>
                 <p className="text-xs text-zinc-400 leading-relaxed">
-                  Test pieces directly in your workflow. Hassle-free exchanges and returns within 30 days.
+                  Hassle-free exchanges and returns within 30 days of receiving your order.
                 </p>
               </div>
             </div>
@@ -69,11 +69,11 @@ export default function SiteFooter() {
               Forma
             </Link>
             <p className="text-xs text-zinc-400 max-w-sm leading-relaxed">
-              Forma designs tactile instruments, minimalist workstation goods, and everyday carry pieces built for focused minds and enduring spaces.
+              Forma is a modern direct-to-consumer store offering a curated range of everyday essentials, tech accessories, and lifestyle goods.
             </p>
             <div className="pt-2">
               <span className="inline-block px-2.5 py-1 text-[10px] uppercase tracking-widest bg-zinc-900 text-zinc-300 rounded-xs border border-zinc-800">
-                CodeAlpha Full Stack Project • Phase 2 Experience
+                CodeAlpha Full Stack Project • Modern E-Commerce
               </span>
             </div>
           </div>
@@ -81,12 +81,12 @@ export default function SiteFooter() {
           {/* Quick Links Column */}
           <div className="md:col-span-3 space-y-3">
             <h5 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-200">
-              Navigation
+              Departments
             </h5>
             <ul className="space-y-2.5 text-xs">
               <li>
                 <Link to="/" className="hover:text-zinc-100 transition-colors">
-                  Overview
+                  Home
                 </Link>
               </li>
               <li>
@@ -95,18 +95,18 @@ export default function SiteFooter() {
                 </Link>
               </li>
               <li>
-                <Link to="/products?category=Workstation" className="hover:text-zinc-100 transition-colors">
-                  Workstation Goods
+                <Link to="/products?category=Tech%20%26%20Audio" className="hover:text-zinc-100 transition-colors">
+                  Tech & Audio
                 </Link>
               </li>
               <li>
-                <Link to="/products?category=Audio" className="hover:text-zinc-100 transition-colors">
-                  Acoustic Fidelity
+                <Link to="/products?category=Bags%20%26%20Accessories" className="hover:text-zinc-100 transition-colors">
+                  Bags & Accessories
                 </Link>
               </li>
               <li>
-                <Link to="/products?category=Carry" className="hover:text-zinc-100 transition-colors">
-                  Everyday Carry
+                <Link to="/products?category=Home%20Essentials" className="hover:text-zinc-100 transition-colors">
+                  Home Essentials
                 </Link>
               </li>
               <li>
@@ -120,10 +120,10 @@ export default function SiteFooter() {
           {/* Newsletter / Dispatch Column */}
           <div className="md:col-span-4 space-y-3">
             <h5 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-200">
-              The Dispatch
+              Newsletter
             </h5>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              Curated notes on industrial design, studio releases, and exclusive limited drops.
+              Subscribe for new product drops, stock updates, and exclusive customer discounts.
             </p>
             <form onSubmit={(e) => e.preventDefault()} className="mt-3 flex">
               <input
@@ -140,7 +140,7 @@ export default function SiteFooter() {
               </button>
             </form>
             <p className="text-[10px] text-zinc-500">
-              Restrained communications only. Unsubscribe anytime.
+              No spam. Unsubscribe anytime.
             </p>
           </div>
 
@@ -149,12 +149,12 @@ export default function SiteFooter() {
         {/* Bottom Subfooter */}
         <div className="mt-14 pt-8 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between text-[11px] text-zinc-500 gap-4">
           <div>
-            &copy; {CURRENT_YEAR} Forma Goods Co. All rights reserved.
+            &copy; {CURRENT_YEAR} Forma Online Store. All rights reserved.
           </div>
           <div className="flex items-center gap-4 text-zinc-500">
-            <span>Designed for focused spaces</span>
+            <span>Everyday essentials, thoughtfully chosen</span>
             <span>•</span>
-            <span>Kyoto & Berlin Studios</span>
+            <span>Customer Care: support@forma.store</span>
           </div>
         </div>
       </div>

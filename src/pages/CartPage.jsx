@@ -41,7 +41,7 @@ export default function CartPage() {
         )}
       </div>
 
-      {/* 1. GENUINE EMPTY STATE WHEN CART HAS NO ITEMS */}
+      {/* 1. EMPTY STATE WHEN CART HAS NO ITEMS */}
       {cartItems.length === 0 ? (
         <div className="py-20 sm:py-28 text-center space-y-6 bg-white border border-[#eae8e1] rounded-xs px-4">
           <div className="mx-auto w-16 h-16 rounded-full bg-[#f5f4ed] flex items-center justify-center text-zinc-700 border border-[#eae8e1]">
@@ -53,7 +53,7 @@ export default function CartPage() {
               Your shopping bag is currently empty
             </h2>
             <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed">
-              When you select pieces from the studio archive, they will appear here with calculated shipping and packaging details.
+              When you add items to your shopping bag, they will appear here with calculated shipping and order details.
             </p>
           </div>
 
@@ -63,15 +63,15 @@ export default function CartPage() {
               className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#121212] text-[#fafaf8] text-xs uppercase tracking-[0.16em] font-semibold rounded-xs hover:bg-black transition-colors shadow-xs"
             >
               <ArrowLeft size={14} />
-              <span>Explore Collection</span>
+              <span>Shop All Products</span>
             </Link>
           </div>
 
           {/* Value Badges */}
           <div className="pt-8 border-t border-[#f4f3ed] max-w-lg mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 text-[11px] text-zinc-500">
             <div>• Free courier over ₹4,999</div>
-            <div>• 30-day studio trial</div>
-            <div>• Carbon-neutral transit</div>
+            <div>• 30-day easy returns</div>
+            <div>• Tracked express delivery</div>
           </div>
         </div>
       ) : (
@@ -165,7 +165,7 @@ export default function CartPage() {
           {/* Order Summary Sidebar */}
           <div className="lg:col-span-4 bg-white border border-[#eae8e1] p-6 rounded-xs space-y-6 shadow-2xs">
             <h2 className="text-xs font-semibold uppercase tracking-wider text-zinc-900 border-b border-[#eae8e1] pb-3">
-              Estimated Summary
+              Order Summary
             </h2>
 
             <dl className="space-y-3 text-xs">
@@ -174,7 +174,7 @@ export default function CartPage() {
                 <dd className="font-medium text-zinc-950 tabular-nums">{formatPrice(subtotal)}</dd>
               </div>
               <div className="flex justify-between text-zinc-600">
-                <dt>Express Courier</dt>
+                <dt>Delivery</dt>
                 <dd className="font-medium text-zinc-950 tabular-nums">
                   {shipping === 0 ? 'Free' : formatPrice(shipping)}
                 </dd>
@@ -182,7 +182,7 @@ export default function CartPage() {
 
               {subtotal < 4999 && (
                 <div className="text-[11px] text-zinc-500 bg-[#fbfaf6] p-2.5 border border-[#eae8e1] rounded-xs">
-                  Add <span className="font-semibold text-zinc-900">{formatPrice(4999 - subtotal)}</span> more for complimentary courier delivery.
+                  Add <span className="font-semibold text-zinc-900">{formatPrice(4999 - subtotal)}</span> more for free courier delivery.
                 </div>
               )}
 
@@ -202,13 +202,13 @@ export default function CartPage() {
                 <ArrowRight size={14} />
               </button>
               <p className="text-[10px] text-zinc-400 text-center">
-                Secure payment gateway & checkout will be connected in the backend milestone.
+                Secure checkout and payment gateways will be activated in the backend milestone.
               </p>
             </div>
 
             <div className="flex items-center gap-2 text-[11px] text-zinc-500 justify-center pt-2 border-t border-[#f4f3ed]">
               <ShieldCheck size={14} className="text-zinc-700" />
-              <span>256-Bit Encrypted Architecture</span>
+              <span>Secure Encrypted Checkout</span>
             </div>
           </div>
 
@@ -222,7 +222,7 @@ export default function CartPage() {
           className="text-xs text-zinc-500 hover:text-zinc-950 inline-flex items-center gap-1.5 transition-colors"
         >
           <ArrowLeft size={13} />
-          <span>Continue browsing catalogue</span>
+          <span>Continue shopping</span>
         </Link>
       </div>
 

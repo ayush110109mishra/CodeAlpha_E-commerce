@@ -13,26 +13,26 @@ export default function NotFoundPage() {
           404 Error
         </span>
         <h1 className="text-3xl sm:text-4xl font-semibold text-zinc-950 tracking-tight">
-          Page Not Located
+          Page Not Found
         </h1>
         <p className="text-xs sm:text-sm text-zinc-500 max-w-md mx-auto leading-relaxed">
-          The requested path does not exist or has been relocated within the Forma studio archive.
+          The requested page does not exist or has been moved. Explore our products to continue shopping.
         </p>
       </div>
 
       <div className="pt-4 flex flex-wrap justify-center gap-4">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 px-5 py-3 bg-[#121212] text-[#fafaf8] text-xs uppercase tracking-[0.16em] font-semibold rounded-xs hover:bg-black transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-3 bg-[#121212] text-[#fafaf8] text-xs uppercase tracking-widest font-semibold rounded-xs hover:bg-black transition-colors"
         >
           <ArrowLeft size={14} />
           <span>Return to Home</span>
         </Link>
         <Link
           to="/products"
-          className="inline-flex items-center gap-2 px-5 py-3 bg-white text-zinc-900 border border-[#eae8e1] text-xs uppercase tracking-[0.16em] font-semibold rounded-xs hover:bg-[#f4f3ed] transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-3 bg-white text-zinc-900 border border-[#eae8e1] text-xs uppercase tracking-widest font-semibold rounded-xs hover:bg-[#f4f3ed] transition-colors"
         >
-          <span>Explore Catalogue</span>
+          <span>View All Products</span>
         </Link>
       </div>
     </div>

@@ -1,12 +1,13 @@
 import { useSearchParams } from 'react-router-dom'
-import { getAllProducts, CATEGORIES } from '../data/products'
+import { getAllProducts, CATEGORIES, normalizeCategory } from '../data/products'
 import ProductCard from '../components/products/ProductCard'
 import { Search, ArrowUpDown, RotateCcw, X } from 'lucide-react'
 
 export default function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const activeCategory = searchParams.get('category') || 'All'
+  const rawCategory = searchParams.get('category') || 'All'
+  const activeCategory = normalizeCategory(rawCategory)
   const sortBy = searchParams.get('sort') || 'curated'
   const searchQuery = searchParams.get('q') || ''
 
@@ -117,20 +118,20 @@ export default function ProductsPage() {
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <span className="text-[11px] uppercase tracking-[0.22em] text-zinc-500 font-semibold">
-              Forma Archive
+              Forma Store
             </span>
             <span className="text-zinc-300">•</span>
             <span className="text-[11px] text-zinc-500 tracking-wider">
-              {activeCategory === 'All' ? 'Complete Collection' : `${activeCategory} Series`}
+              {activeCategory === 'All' ? 'All Products' : activeCategory}
             </span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl font-semibold text-zinc-950 tracking-tight">
-            The Catalogue
+            All Products
           </h1>
 
           <p className="text-xs sm:text-sm text-zinc-500 max-w-xl leading-relaxed">
-            Every instrument is engineered for tactile feedback, silent operation, and long-term durability. Search by specification or filter by workspace series.
+            Explore our curated collection of everyday essentials, tech accessories, carry goods, and home objects.
           </p>
         </div>
       </div>
@@ -141,7 +142,7 @@ export default function ProductsPage() {
         {/* Row 1: Search Input & Sort Selector */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           
-          {/* Polish & Familiar Accessible Search Input */}
+          {/* Familiar Accessible Search Input */}
           <div className="relative flex-1 w-full max-w-2xl">
             <label htmlFor="catalogue-search" className="sr-only">
               Search products, brands and categories
@@ -224,7 +225,7 @@ export default function ProductsPage() {
 
       </div>
 
-      {/* Product Grid or Polished Empty State */}
+      {/* Product Grid or Clean Empty State */}
       {sortedProducts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {sortedProducts.map((product) => (
@@ -232,7 +233,7 @@ export default function ProductsPage() {
           ))}
         </div>
       ) : (
-        /* Polished Empty Results State */
+        /* Empty Results State */
         <div className="py-20 sm:py-24 text-center space-y-4 bg-white border border-[#eae8e1] rounded-xs px-4">
           <div className="mx-auto w-12 h-12 rounded-full bg-[#f5f4ed] flex items-center justify-center text-zinc-500 border border-[#eae8e1]">
             <Search size={20} strokeWidth={1.5} />
@@ -240,15 +241,15 @@ export default function ProductsPage() {
 
           <div className="space-y-1 max-w-md mx-auto">
             <h3 className="text-base font-semibold text-zinc-950">
-              No matching pieces found
+              No matching products found
             </h3>
             <p className="text-xs text-zinc-500 leading-relaxed">
               {searchQuery && activeCategory !== 'All' ? (
-                <>No items found matching &ldquo;<span className="font-medium text-zinc-800">{searchQuery}</span>&rdquo; in the <span className="font-medium text-zinc-800">{activeCategory}</span> series.</>
+                <>No items found matching &ldquo;<span className="font-medium text-zinc-800">{searchQuery}</span>&rdquo; in the <span className="font-medium text-zinc-800">{activeCategory}</span> category.</>
               ) : searchQuery ? (
-                <>No items found matching &ldquo;<span className="font-medium text-zinc-800">{searchQuery}</span>&rdquo; across all collections.</>
+                <>No items found matching &ldquo;<span className="font-medium text-zinc-800">{searchQuery}</span>&rdquo; across all products.</>
               ) : (
-                <>No pieces currently catalogued in the <span className="font-medium text-zinc-800">{activeCategory}</span> series.</>
+                <>No products currently found in the <span className="font-medium text-zinc-800">{activeCategory}</span> category.</>
               )}
             </p>
           </div>

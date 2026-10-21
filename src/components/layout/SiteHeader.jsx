@@ -22,11 +22,11 @@ export default function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 bg-[#fafaf8]/95 backdrop-blur-md border-b border-[#eae8e1] transition-colors">
-      {/* Slim Understated Announcement Bar */}
+      {/* Announcement Bar */}
       <div className="bg-[#121212] text-zinc-300 text-[11px] tracking-[0.14em] uppercase py-1.5 px-4 text-center font-normal flex items-center justify-center gap-2">
         <span>Complimentary express courier across India on orders over ₹4,999</span>
         <span className="hidden sm:inline text-zinc-500">•</span>
-        <span className="hidden sm:inline text-zinc-400">Two-Year Studio Guarantee</span>
+        <span className="hidden sm:inline text-zinc-400">Easy 30-Day Returns</span>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,9 +54,6 @@ export default function SiteHeader() {
             >
               Forma
             </Link>
-            <span className="hidden md:inline-flex items-center text-[10px] tracking-widest uppercase px-2 py-0.5 border border-[#d8d6ce] text-zinc-600 rounded-full font-medium bg-[#f5f4ed]">
-              Studio
-            </span>
           </div>
 
           {/* Desktop Navigation */}
@@ -79,11 +76,11 @@ export default function SiteHeader() {
               to="/products"
               className="hidden lg:inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-zinc-600 hover:text-zinc-950 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900 rounded-xs"
             >
-              <span>Explore Collection</span>
+              <span>Shop Products</span>
               <ArrowUpRight size={13} strokeWidth={1.75} />
             </Link>
 
-            {/* Cart Link with Restrained Badge */}
+            {/* Cart Link with Badge */}
             <Link
               to="/cart"
               className="group relative p-2 text-zinc-900 hover:text-zinc-950 transition-colors rounded-full hover:bg-zinc-200/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900"
@@ -120,8 +117,8 @@ export default function SiteHeader() {
               </NavLink>
             ))}
             <div className="pt-3 border-t border-[#eae8e1] flex items-center justify-between text-xs text-zinc-500">
-              <span>Forma Studio Edition</span>
-              <span className="text-[11px] tracking-wider uppercase text-zinc-400">Kyoto • Berlin</span>
+              <span>Forma Online Store</span>
+              <span className="text-[11px] tracking-wider uppercase text-zinc-400">Everyday Goods</span>
             </div>
           </nav>
         </div>
