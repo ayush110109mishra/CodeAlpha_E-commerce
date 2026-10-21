@@ -30,13 +30,6 @@ export default function ProductCard({ product, customFrom }) {
           className="h-full w-full object-cover object-center transition-cinematic group-hover:scale-[1.035]"
         />
 
-        {/* Meaningful Editorial Badge */}
-        {product.featured && (
-          <div className="absolute top-3 left-3 bg-[#121212]/90 backdrop-blur-xs text-[#fafaf8] text-[10px] uppercase tracking-[0.16em] px-2.5 py-1 font-medium rounded-xs shadow-xs">
-            Studio Pick
-          </div>
-        )}
-
         {/* Hover Action Indicator */}
         <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 bg-white/95 backdrop-blur-xs p-2 rounded-full text-zinc-900 shadow-sm">
           <ArrowUpRight size={15} strokeWidth={2} />

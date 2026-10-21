@@ -102,11 +102,6 @@ export default function ProductDetailPage() {
               alt={product.name}
               className="h-full w-full object-cover object-center"
             />
-            {product.featured && (
-              <span className="absolute top-4 left-4 bg-[#121212]/90 backdrop-blur-xs text-white text-[10px] uppercase tracking-[0.18em] px-3 py-1 font-medium rounded-xs shadow-xs">
-                Studio Edition
-              </span>
-            )}
           </div>
           <div className="flex items-center justify-between text-[11px] text-zinc-400 px-1">
             <span>Official Studio Reference Photography</span>
@@ -148,7 +143,7 @@ export default function ProductDetailPage() {
                 </span>
               )}
               <span className="text-xs text-zinc-500 ml-auto">
-                Taxes & Import Duties Included
+                Inclusive of all taxes (GST)
               </span>
             </div>
           </div>

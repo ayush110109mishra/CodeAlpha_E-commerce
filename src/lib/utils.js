@@ -9,11 +9,12 @@ export function cn(...inputs) {
 }
 
 /**
- * Formats numbers into standardized currency format (e.g. $129.00)
+ * Formats numbers into standardized Indian Rupee currency format (e.g. ₹18,900)
  */
 export function formatPrice(amount) {
-  return new Intl.NumberFormat('en-US', {
+  return new Intl.NumberFormat('en-IN', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'INR',
+    maximumFractionDigits: 0,
   }).format(amount)
 }

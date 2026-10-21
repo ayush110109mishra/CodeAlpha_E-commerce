@@ -24,7 +24,7 @@ export default function SiteHeader() {
     <header className="sticky top-0 z-40 bg-[#fafaf8]/95 backdrop-blur-md border-b border-[#eae8e1] transition-colors">
       {/* Slim Understated Announcement Bar */}
       <div className="bg-[#121212] text-zinc-300 text-[11px] tracking-[0.14em] uppercase py-1.5 px-4 text-center font-normal flex items-center justify-center gap-2">
-        <span>Complimentary carbon-neutral courier on orders over $150</span>
+        <span>Complimentary express courier across India on orders over ₹4,999</span>
         <span className="hidden sm:inline text-zinc-500">•</span>
         <span className="hidden sm:inline text-zinc-400">Two-Year Studio Guarantee</span>
       </div>

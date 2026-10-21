@@ -4,10 +4,10 @@ import { formatPrice } from '../lib/utils'
 import { useCart } from '../context/CartContext'
 
 export default function CartPage() {
-  const { cartItems, updateQuantity, removeFromCart, totalItems, subtotal } = useCart()
+  const { cartItems, updateQuantity, removeFromCart, clearCart, totalItems, subtotal } = useCart()
 
-  // Complimentary express shipping on orders over $150
-  const shipping = subtotal > 150 ? 0 : 15
+  // Complimentary express shipping on orders over ₹4,999
+  const shipping = subtotal > 4999 ? 0 : 350
   const total = subtotal + (cartItems.length > 0 ? shipping : 0)
 
   return (
@@ -25,9 +25,19 @@ export default function CartPage() {
         </div>
 
         {cartItems.length > 0 && (
-          <p className="text-xs text-zinc-500">
-            {totalItems} {totalItems === 1 ? 'item' : 'items'} in your bag
-          </p>
+          <div className="flex items-center gap-3">
+            <p className="text-xs text-zinc-500">
+              {totalItems} {totalItems === 1 ? 'item' : 'items'} in your bag
+            </p>
+            <span className="text-zinc-300">•</span>
+            <button
+              type="button"
+              onClick={clearCart}
+              className="text-xs text-zinc-400 hover:text-red-700 transition-colors underline underline-offset-4 cursor-pointer"
+            >
+              Clear Bag
+            </button>
+          </div>
         )}
       </div>
 
@@ -59,7 +69,7 @@ export default function CartPage() {
 
           {/* Value Badges */}
           <div className="pt-8 border-t border-[#f4f3ed] max-w-lg mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 text-[11px] text-zinc-500">
-            <div>• Free courier over $150</div>
+            <div>• Free courier over ₹4,999</div>
             <div>• 30-day studio trial</div>
             <div>• Carbon-neutral transit</div>
           </div>
@@ -118,8 +128,7 @@ export default function CartPage() {
                       <button
                         type="button"
                         onClick={() => updateQuantity(product.id, quantity - 1)}
-                        disabled={quantity <= 1}
-                        className="p-1.5 text-zinc-500 hover:text-zinc-950 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                        className="p-1.5 text-zinc-500 hover:text-zinc-950 transition-colors cursor-pointer"
                         aria-label={`Decrease quantity of ${product.name}`}
                       >
                         <Minus size={12} />
@@ -171,9 +180,9 @@ export default function CartPage() {
                 </dd>
               </div>
 
-              {subtotal < 150 && (
+              {subtotal < 4999 && (
                 <div className="text-[11px] text-zinc-500 bg-[#fbfaf6] p-2.5 border border-[#eae8e1] rounded-xs">
-                  Add <span className="font-semibold text-zinc-900">{formatPrice(150 - subtotal)}</span> more for complimentary courier delivery.
+                  Add <span className="font-semibold text-zinc-900">{formatPrice(4999 - subtotal)}</span> more for complimentary courier delivery.
                 </div>
               )}
 
@@ -189,11 +198,11 @@ export default function CartPage() {
                 disabled
                 className="w-full bg-[#121212] text-[#fafaf8] opacity-65 cursor-not-allowed py-3.5 px-4 text-xs uppercase tracking-widest font-semibold rounded-xs flex items-center justify-center gap-2"
               >
-                <span>Checkout (Available in Phase 3)</span>
+                <span>Proceed to Checkout</span>
                 <ArrowRight size={14} />
               </button>
               <p className="text-[10px] text-zinc-400 text-center">
-                Full payment processing & transaction handling will be connected in Phase 3.
+                Secure payment gateway & checkout will be connected in the backend milestone.
               </p>
             </div>
 

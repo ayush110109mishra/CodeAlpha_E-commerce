@@ -1,17 +1,89 @@
-import { createContext, useContext, useState, useMemo } from 'react'
+import { createContext, useContext, useState, useEffect, useMemo } from 'react'
+import { getProductById } from '../data/products'
+
+/**
+ * Storage key for persisting cart items in browser localStorage.
+ */
+export const CART_STORAGE_KEY = 'forma-cart'
+
+/**
+ * Safely loads and validates initial cart items from browser localStorage.
+ * Handles missing localStorage, malformed JSON, corrupted data, invalid product IDs,
+ * non-positive or non-integer quantities, and duplicate entries.
+ */
+function getInitialCart() {
+  if (typeof window === 'undefined' || !window.localStorage) {
+    return []
+  }
+
+  try {
+    const raw = window.localStorage.getItem(CART_STORAGE_KEY)
+    if (!raw) return []
+
+    const parsed = JSON.parse(raw)
+    if (!Array.isArray(parsed)) return []
+
+    const validItems = []
+    const seenProductIds = new Set()
+
+    for (const item of parsed) {
+      if (!item || typeof item !== 'object') continue
+
+      // Support productId, id, or nested product.id for robustness
+      const productId = item.productId || item.id || item.product?.id
+      if (!productId || typeof productId !== 'string') continue
+
+      // Prevent duplicate cart entries for the same product
+      if (seenProductIds.has(productId)) continue
+
+      // Validate that quantity is a finite positive integer >= 1
+      const numQty = Number(item.quantity)
+      if (!Number.isFinite(numQty) || numQty <= 0) continue
+      const quantity = Math.max(1, Math.floor(numQty))
+
+      // Validate that the product reference exists in the active catalogue
+      const product = getProductById(productId)
+      if (!product) continue
+
+      seenProductIds.add(productId)
+      validItems.push({ product, quantity })
+    }
+
+    return validItems
+  } catch (error) {
+    console.warn('Forma: Failed to parse stored cart from localStorage:', error)
+    return []
+  }
+}
 
 /**
  * Shared Shopping Cart Context for Forma
  *
  * Provides shared frontend state for the shopping bag across the application.
- * Manages cart item storage, quantity changes, additions, removals, and derived
- * totals (item count, subtotal) without persistent storage in this phase.
+ * Manages cart item storage with automatic localStorage persistence, quantity updates,
+ * additions, removals, and derived totals without persisting derived data.
  */
 const CartContext = createContext(null)
 
 export function CartProvider({ children }) {
-  // In-memory cart items array: [{ product, quantity }]
-  const [cartItems, setCartItems] = useState([])
+  // Initialize cart items from validated localStorage data
+  const [cartItems, setCartItems] = useState(getInitialCart)
+
+  // Persist cart items to localStorage whenever cartItems changes
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.localStorage) return
+
+    try {
+      // Persist only clean identifier and quantity tuples (no derived values)
+      const serialized = cartItems.map((item) => ({
+        productId: item.product.id,
+        quantity: item.quantity,
+      }))
+      window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(serialized))
+    } catch (error) {
+      console.warn('Forma: Failed to save cart to localStorage:', error)
+    }
+  }, [cartItems])
 
   /**
    * Adds a product to the cart with the specified quantity.
@@ -49,16 +121,23 @@ export function CartProvider({ children }) {
 
   /**
    * Updates the quantity of a product in the cart.
-   * Clamps the minimum quantity to 1. Removal is an explicit action via removeFromCart.
+   * If the target quantity is 0 or less, the item is removed from the cart.
    */
   const updateQuantity = (productId, quantity) => {
-    const validQty = Math.max(1, Math.floor(quantity) || 1)
+    const numQty = Number(quantity)
+    if (!Number.isFinite(numQty)) return
 
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
+    const validQty = Math.floor(numQty)
+
+    setCartItems((prevItems) => {
+      if (validQty <= 0) {
+        return prevItems.filter((item) => item.product.id !== productId)
+      }
+
+      return prevItems.map((item) =>
         item.product.id === productId ? { ...item, quantity: validQty } : item
       )
-    )
+    })
   }
 
   /**
