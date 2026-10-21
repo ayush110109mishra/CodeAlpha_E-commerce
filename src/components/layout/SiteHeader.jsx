@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { ShoppingBag, Menu, X, ArrowUpRight } from 'lucide-react'
+import { useCart } from '../../context/CartContext'
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { totalItems } = useCart()
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -85,11 +87,11 @@ export default function SiteHeader() {
             <Link
               to="/cart"
               className="group relative p-2 text-zinc-900 hover:text-zinc-950 transition-colors rounded-full hover:bg-zinc-200/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900"
-              aria-label="View Shopping Bag"
+              aria-label={`View Shopping Bag (${totalItems} items)`}
             >
               <ShoppingBag size={20} strokeWidth={1.6} />
-              <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-zinc-950 text-[10px] font-semibold text-white tracking-tighter shadow-xs">
-                0
+              <span className="absolute top-1 right-1 flex h-4 min-w-4 px-1 items-center justify-center rounded-full bg-zinc-950 text-[10px] font-semibold text-white tracking-tighter shadow-xs">
+                {totalItems}
               </span>
             </Link>
           </div>

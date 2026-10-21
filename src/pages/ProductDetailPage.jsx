@@ -2,12 +2,14 @@ import { useState } from 'react'
 import { useParams, useLocation, Link } from 'react-router-dom'
 import { getProductBySlug, getAllProducts } from '../data/products'
 import { formatPrice } from '../lib/utils'
+import { useCart } from '../context/CartContext'
 import ProductCard from '../components/products/ProductCard'
-import { ArrowLeft, Check, ShieldCheck, Truck, RotateCcw, ShoppingBag, Plus, Minus, Info } from 'lucide-react'
+import { ArrowLeft, Check, ShieldCheck, Truck, RotateCcw, ShoppingBag, Plus, Minus } from 'lucide-react'
 
 export default function ProductDetailPage() {
   const { slug } = useParams()
   const location = useLocation()
+  const { addToCart } = useCart()
   const product = getProductBySlug(slug)
   const [quantity, setQuantity] = useState(1)
   const [addedNotice, setAddedNotice] = useState(false)
@@ -48,7 +50,8 @@ export default function ProductDetailPage() {
     .filter((p) => p.id !== product.id && (p.category === product.category || p.featured))
     .slice(0, 3)
 
-  const handleSimulatedAdd = () => {
+  const handleAddToCart = () => {
+    addToCart(product, quantity)
     setAddedNotice(true)
     setTimeout(() => setAddedNotice(false), 3500)
   }
@@ -223,7 +226,7 @@ export default function ProductDetailPage() {
               {/* Primary Add to Bag Action */}
               <button
                 type="button"
-                onClick={handleSimulatedAdd}
+                onClick={handleAddToCart}
                 className="flex-1 bg-[#121212] text-[#fafaf8] hover:bg-black transition-colors py-3.5 px-6 text-xs uppercase tracking-[0.16em] font-semibold rounded-xs flex items-center justify-center gap-2 cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950"
               >
                 <ShoppingBag size={16} />
@@ -233,9 +236,17 @@ export default function ProductDetailPage() {
 
             {/* Notification state */}
             {addedNotice && (
-              <div className="p-3 bg-[#f5f4ed] text-zinc-800 text-xs border border-[#eae8e1] rounded-xs flex items-center gap-2 animate-in fade-in duration-200">
-                <Info size={14} className="text-zinc-600 shrink-0" />
-                <span>Acknowledged. Full global cart state & persistence will be linked in the next phase.</span>
+              <div className="p-3 bg-[#f5f4ed] text-zinc-900 text-xs border border-[#eae8e1] rounded-xs flex items-center justify-between gap-3 animate-in fade-in duration-200">
+                <div className="flex items-center gap-2">
+                  <Check size={14} className="text-emerald-700 shrink-0" />
+                  <span>Added {quantity} × {product.name} to your shopping bag.</span>
+                </div>
+                <Link
+                  to="/cart"
+                  className="font-semibold text-zinc-950 underline underline-offset-2 shrink-0 hover:text-zinc-700"
+                >
+                  View Bag
+                </Link>
               </div>
             )}
 
