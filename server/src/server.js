@@ -17,16 +17,22 @@ const startServer = async () => {
   // Attempt database connection
   await connectDB()
 
-  // Start listening for incoming HTTP requests (bound to 0.0.0.0 for universal IPv4/IPv6 localhost access)
-  const server = app.listen(PORT, '0.0.0.0', () => {
+  // Start listening for incoming HTTP requests
+  // In production (e.g. Render / Docker), bind to 0.0.0.0 to accept external container traffic.
+  // In local development, default dual-stack binding supports both IPv4 127.0.0.1 and IPv6 ::1 localhost.
+  const HOST = process.env.HOST || (process.env.NODE_ENV === 'production' ? '0.0.0.0' : undefined)
+
+  const onListening = () => {
     console.log(`=================================================`)
     console.log(`🚀 Forma Backend Server is running!`)
     console.log(`📡 Local:       http://localhost:${PORT}`)
-    console.log(`📡 Network:     http://127.0.0.1:${PORT}`)
+    console.log(`📡 Network:     http://${HOST || '127.0.0.1'}:${PORT}`)
     console.log(`🩺 Health API:  http://localhost:${PORT}/api/health`)
     console.log(`🌱 Environment: ${process.env.NODE_ENV || 'development'}`)
     console.log(`=================================================\n`)
-  })
+  }
+
+  const server = HOST ? app.listen(PORT, HOST, onListening) : app.listen(PORT, onListening)
 
   // Handle server startup errors gracefully (e.g. port already in use)
   server.on('error', (error) => {

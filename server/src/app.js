@@ -18,20 +18,33 @@ const app = express()
 // ----------------------------------------------------
 // 1. CORS Configuration (Controlled cross-origin access)
 // ----------------------------------------------------
-const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173'
+const rawClientUrl = process.env.CLIENT_URL || 'http://localhost:5173'
+const configuredOrigins = rawClientUrl
+  .split(',')
+  .map((url) => url.trim().replace(/\/+$/, ''))
+  .filter(Boolean)
+
 const allowedOrigins = [
-  clientUrl,
+  ...configuredOrigins,
   'http://localhost:5173',
   'http://localhost:5174',
   'http://127.0.0.1:5173',
-  'http://127.0.0.1:5174'
+  'http://127.0.0.1:5174',
+  'http://[::1]:5173',
+  'http://[::1]:5174'
 ]
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (curl, postman, direct tools) or matching allowed frontend origins (including any local dev port)
-      if (!origin || allowedOrigins.includes(origin) || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+      // Allow requests with no origin (curl, postman, server-to-server)
+      // or matching configured origins, local development hosts, or Vercel production/preview domains
+      if (
+        !origin ||
+        allowedOrigins.includes(origin) ||
+        /^http:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(origin) ||
+        /^https:\/\/[a-zA-Z0-9_.-]+\.vercel\.app$/.test(origin)
+      ) {
         callback(null, true)
       } else {
         callback(new Error(`CORS policy: Origin ${origin} is not allowed access`))
