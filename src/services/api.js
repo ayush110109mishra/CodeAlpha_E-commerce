@@ -5,9 +5,15 @@
  * Uses VITE_API_BASE_URL with safe fallback, error normalization, and request cancellation.
  */
 
+/**
+ * In production, fall back to the live Render backend deployment.
+ * In local development (import.meta.env.DEV), fall back to '/api' (Vite proxy).
+ */
+const PRODUCTION_API_URL = 'https://codealpha-e-commerce-77s9.onrender.com/api'
+
 const API_BASE_URL = (
   (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_BASE_URL) ||
-  '/api'
+  (typeof import.meta !== 'undefined' && import.meta.env?.DEV ? '/api' : PRODUCTION_API_URL)
 ).replace(/\/+$/, '')
 
 /**
@@ -59,6 +65,34 @@ export const normalizeProduct = (p) => {
 }
 
 /**
+ * Safe fetch with automatic retry for server cold-starts or transient 503s
+ */
+const fetchWithRetry = async (url, options = {}, retries = 2, delayMs = 1500) => {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const response = await fetch(url, options)
+
+      // If server is temporarily unavailable (cold start / DB reconnecting), retry gracefully
+      if (response.status === 503 && attempt < retries && !options?.signal?.aborted) {
+        await new Promise((resolve) => setTimeout(resolve, delayMs * (attempt + 1)))
+        continue
+      }
+
+      return response
+    } catch (err) {
+      if (err.name === 'AbortError' || options?.signal?.aborted) {
+        throw err
+      }
+      if (attempt < retries) {
+        await new Promise((resolve) => setTimeout(resolve, delayMs * (attempt + 1)))
+        continue
+      }
+      throw err
+    }
+  }
+}
+
+/**
  * Fetch products list with optional search, category, sort, and pagination.
  * Supports passing an AbortSignal to cancel in-flight requests.
  */
@@ -89,7 +123,7 @@ export const fetchProducts = async (
   const url = `${API_BASE_URL}/products${queryString ? `?${queryString}` : ''}`
 
   try {
-    const response = await fetch(url, { signal })
+    const response = await fetchWithRetry(url, { signal })
     const json = await response.json().catch(() => null)
 
     if (!response.ok) {
@@ -132,7 +166,7 @@ export const fetchProductBySlug = async (slug, { signal } = {}) => {
   const url = `${API_BASE_URL}/products/slug/${encodeURIComponent(slug.trim())}`
 
   try {
-    const response = await fetch(url, { signal })
+    const response = await fetchWithRetry(url, { signal })
     const json = await response.json().catch(() => null)
 
     if (!response.ok) {
@@ -164,7 +198,7 @@ export const fetchProductById = async (id, { signal } = {}) => {
   const url = `${API_BASE_URL}/products/${encodeURIComponent(id)}`
 
   try {
-    const response = await fetch(url, { signal })
+    const response = await fetchWithRetry(url, { signal })
     const json = await response.json().catch(() => null)
 
     if (!response.ok) {
