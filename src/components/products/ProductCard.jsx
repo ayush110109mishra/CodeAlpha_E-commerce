@@ -6,8 +6,8 @@ import { useCart } from '../../context/CartContext'
 
 /**
  * Forma Product Card
- * Clean e-commerce product card with product imagery, clear pricing in INR,
- * working detail links, and an integrated quick add-to-cart action.
+ * Editorial e-commerce product card with smooth hover transitions,
+ * electric lime micro-accents, clear INR pricing, and quick add-to-bag.
  */
 export default function ProductCard({ product, customFrom }) {
   const location = useLocation()
@@ -24,64 +24,80 @@ export default function ProductCard({ product, customFrom }) {
     e.stopPropagation()
     addToCart(product, 1)
     setIsAdded(true)
-    setTimeout(() => setIsAdded(false), 1800)
+    setTimeout(() => setIsAdded(false), 1600)
   }
 
   return (
-    <article className="group relative flex flex-col bg-white border border-[#eae8e1] rounded-xs overflow-hidden hover:border-zinc-400/80 hover:shadow-xs transition-all duration-300">
+    <article className="group relative flex flex-col bg-white border border-[#e8e5dc] rounded-xs overflow-hidden hover:border-[#121212]/70 hover:shadow-md transition-all duration-300">
       {/* Product Image Stage */}
       <Link 
         to={`/products/${product.slug}`}
         state={{ from: currentPathWithSearch }}
-        className="relative block aspect-[4/3] sm:aspect-[1/1] overflow-hidden bg-[#f4f3ed]"
+        className="relative block aspect-[4/3] sm:aspect-[1/1] overflow-hidden bg-[#f3f0e9]"
         aria-label={`View details for ${product.name}`}
       >
         <img
           src={product.image}
           alt={product.name}
           loading="lazy"
-          className="h-full w-full object-cover object-center transition-cinematic group-hover:scale-[1.035]"
+          className="h-full w-full object-cover object-center transition-cinematic group-hover:scale-[1.045]"
         />
 
-        {/* Hover Action Indicator */}
-        <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 bg-white/95 backdrop-blur-xs p-2 rounded-full text-zinc-900 shadow-sm">
-          <ArrowUpRight size={15} strokeWidth={2} />
+        {/* Stock / Category Micro-Pill */}
+        <div className="absolute top-3 left-3 flex items-center gap-1.5">
+          {product.featured && (
+            <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 bg-[#ccff00] text-[#121212] font-bold rounded-xs shadow-xs">
+              Featured
+            </span>
+          )}
+        </div>
+
+        {/* Hover Arrow Indicator */}
+        <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 bg-[#121212] p-2 rounded-full text-[#ccff00] shadow-sm">
+          <ArrowUpRight size={14} strokeWidth={2.25} />
         </div>
       </Link>
 
       {/* Product Metadata Block */}
       <div className="p-4 sm:p-5 flex flex-col flex-1 bg-white">
         <div className="flex items-center justify-between gap-2 mb-1.5">
-          <span className="text-[10px] uppercase tracking-[0.18em] font-medium text-zinc-500">
+          <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-[#64645f]">
             {product.category}
           </span>
-          <span className="text-[10px] text-zinc-400 font-medium">
-            {product.inStock ? 'In Stock' : 'Out of Stock'}
+          <span className="text-[10px] text-[#64645f] font-medium">
+            {product.inStock ? (
+              <span className="inline-flex items-center gap-1 text-emerald-700">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                In Stock
+              </span>
+            ) : (
+              'Sold Out'
+            )}
           </span>
         </div>
 
-        <h3 className="text-sm font-semibold text-zinc-950 group-hover:text-zinc-600 transition-colors line-clamp-1">
+        <h3 className="text-sm font-semibold text-[#121212] group-hover:text-[#64645f] transition-colors line-clamp-1">
           <Link 
             to={`/products/${product.slug}`}
             state={{ from: currentPathWithSearch }}
-            className="focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 rounded-xs"
+            className="focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#121212] rounded-xs"
           >
             {product.name}
           </Link>
         </h3>
 
-        <p className="mt-1 text-xs text-zinc-500 line-clamp-2 leading-relaxed flex-1">
+        <p className="mt-1 text-xs text-[#64645f] line-clamp-2 leading-relaxed flex-1">
           {product.tagline || product.description}
         </p>
 
         {/* Price & Action Row */}
-        <div className="mt-4 pt-3 border-t border-[#f0eee6] flex items-center justify-between gap-2">
+        <div className="mt-4 pt-3 border-t border-[#f3f0e9] flex items-center justify-between gap-2">
           <div className="flex items-baseline gap-2">
-            <span className="text-sm font-semibold text-zinc-950 tabular-nums">
+            <span className="text-sm font-bold text-[#121212] tabular-nums">
               {formatPrice(product.price)}
             </span>
             {product.originalPrice && (
-              <span className="text-xs text-zinc-400 line-through tabular-nums">
+              <span className="text-xs text-[#8c8980] line-through tabular-nums">
                 {formatPrice(product.originalPrice)}
               </span>
             )}
@@ -91,10 +107,10 @@ export default function ProductCard({ product, customFrom }) {
             <button
               type="button"
               onClick={handleQuickAdd}
-              className={`inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1.5 rounded-xs transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 ${
+              className={`inline-flex items-center gap-1 text-[11px] font-semibold px-3 py-1.5 rounded-xs transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#121212] ${
                 isAdded
-                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                  : 'bg-zinc-900 text-white hover:bg-black'
+                  ? 'bg-[#ccff00] text-[#121212] border border-[#121212] shadow-xs'
+                  : 'bg-[#121212] text-[#faf8f5] hover:bg-black hover:border-black active:scale-95'
               }`}
               aria-label={`Add ${product.name} to bag`}
             >

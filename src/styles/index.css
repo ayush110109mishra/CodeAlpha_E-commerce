@@ -3,12 +3,14 @@
 :root {
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
-  --bg-warm: #fafaf8;
-  --text-ink: #111111;
-  --text-muted: #5e5e5b;
-  --border-subtle: #eae8e1;
-  --surface-card: #f4f3ed;
-  --accent-amber: #b45309;
+  --bg-warm: #faf8f5;
+  --bg-surface: #f3f0e9;
+  --bg-card: #ffffff;
+  --text-ink: #121212;
+  --text-muted: #64645f;
+  --border-subtle: #e8e5dc;
+  --accent-lime: #ccff00;
+  --accent-lime-hover: #b5e600;
 }
 
 body {
@@ -23,14 +25,23 @@ body {
   font-family: var(--font-serif);
 }
 
-/* Cinematic image and hover transition curve (inspired by gallery monographs) */
+/* Premium Awwwards-inspired smooth cinematic motion */
 .transition-cinematic {
-  transition-property: transform, opacity, filter;
+  transition-property: transform, opacity, filter, box-shadow, background-color, border-color;
   transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  transition-duration: 650ms;
+  transition-duration: 400ms;
 }
 
-/* Smooth scrolling with reduced-motion support */
+/* Electric lime micro-glow effect on active or hovered states */
+.lime-glow {
+  box-shadow: 0 0 20px -3px rgba(204, 255, 0, 0.45);
+}
+
+.lime-glow-subtle {
+  box-shadow: 0 0 12px -2px rgba(204, 255, 0, 0.25);
+}
+
+/* Smooth scrolling with reduced-motion guard */
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
@@ -47,22 +58,22 @@ body {
 }
 
 ::selection {
-  background-color: #111111;
-  color: #fafaf8;
+  background-color: #121212;
+  color: #ccff00;
 }
 
-/* Subtle editorial scrollbar */
+/* Editorial subtle scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #fafaf8;
+  background: #faf8f5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d4d4ce;
+  background: #d8d4ca;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a2;
+  background: #b5b0a3;
 }

@@ -10,7 +10,7 @@ import SiteFooter from './SiteFooter'
  */
 export default function MainLayout() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#fafaf8] text-[#121212] selection:bg-[#121212] selection:text-[#fafaf8]">
+    <div className="min-h-screen flex flex-col bg-[#faf8f5] text-[#121212] selection:bg-[#121212] selection:text-[#ccff00]">
       <SiteHeader />
       <main className="flex-1 flex flex-col">
         <Outlet />
