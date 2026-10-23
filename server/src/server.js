@@ -17,11 +17,12 @@ const startServer = async () => {
   // Attempt database connection
   await connectDB()
 
-  // Start listening for incoming HTTP requests
-  const server = app.listen(PORT, () => {
+  // Start listening for incoming HTTP requests (bound to 0.0.0.0 for universal IPv4/IPv6 localhost access)
+  const server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`=================================================`)
     console.log(`🚀 Forma Backend Server is running!`)
     console.log(`📡 Local:       http://localhost:${PORT}`)
+    console.log(`📡 Network:     http://127.0.0.1:${PORT}`)
     console.log(`🩺 Health API:  http://localhost:${PORT}/api/health`)
     console.log(`🌱 Environment: ${process.env.NODE_ENV || 'development'}`)
     console.log(`=================================================\n`)

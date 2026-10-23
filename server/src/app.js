@@ -30,8 +30,8 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (curl, postman, direct tools) or matching allowed frontend origins
-      if (!origin || allowedOrigins.includes(origin)) {
+      // Allow requests with no origin (curl, postman, direct tools) or matching allowed frontend origins (including any local dev port)
+      if (!origin || allowedOrigins.includes(origin) || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
         callback(null, true)
       } else {
         callback(new Error(`CORS policy: Origin ${origin} is not allowed access`))
