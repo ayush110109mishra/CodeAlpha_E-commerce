@@ -1,3 +1,5 @@
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import { connectDB } from '../config/db.js'
@@ -5,6 +7,8 @@ import { Product } from '../models/product.model.js'
 import { PRODUCTS_SEED_DATA } from '../data/products.seed.js'
 
 // Load environment variables from server/.env
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+dotenv.config({ path: path.resolve(__dirname, '../../.env') })
 dotenv.config()
 
 /**
@@ -44,9 +48,9 @@ const seedProducts = async () => {
         { slug: item.slug }, // Identify record by unique slug
         item,                // Update with source of truth data
         {
-          upsert: true,       // Insert if not present, update if already exists
-          new: true,
-          runValidators: true // Enforce schema rules
+          upsert: true,                // Insert if not present, update if already exists
+          returnDocument: 'after',     // Return updated document (replaces deprecated 'new: true')
+          runValidators: true          // Enforce schema rules
         }
       )
       insertedOrUpdated++

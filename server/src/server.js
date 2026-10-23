@@ -1,8 +1,12 @@
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import dotenv from 'dotenv'
 import app from './app.js'
 import { connectDB } from './config/db.js'
 
-// Ensure environment variables are loaded
+// Robustly load server/.env regardless of current working directory
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+dotenv.config({ path: path.resolve(__dirname, '../.env') })
 dotenv.config()
 
 // Configure PORT (defaults to 5000 if not specified in .env)

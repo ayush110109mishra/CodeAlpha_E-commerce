@@ -1,11 +1,16 @@
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import healthRoutes from './routes/health.routes.js'
+import productRoutes from './routes/product.routes.js'
 import { notFound } from './middleware/not-found.js'
 import { errorHandler } from './middleware/error-handler.js'
 
-// Load environment variables from .env
+// Load environment variables from server/.env
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+dotenv.config({ path: path.resolve(__dirname, '../.env') })
 dotenv.config()
 
 const app = express()
@@ -52,13 +57,17 @@ app.use(express.urlencoded({ extended: true }))
 // Mount health check route under /api/health
 app.use('/api/health', healthRoutes)
 
+// Mount products route under /api/products
+app.use('/api/products', productRoutes)
+
 // Root route friendly welcome
 app.get('/', (req, res) => {
   res.status(200).json({
     success: true,
     message: 'Welcome to Forma E-Commerce API',
     endpoints: {
-      health: '/api/health'
+      health: '/api/health',
+      products: '/api/products'
     }
   })
 })
