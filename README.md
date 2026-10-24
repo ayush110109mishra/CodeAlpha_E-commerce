@@ -8,7 +8,7 @@ Forma is an editorial, minimalist consumer storefront crafted for modern worksta
 
 ---
 
-## 🎨 Visual Identity & Design Principles
+##  Visual Identity & Design Principles
 
 - **Warm Neutral Foundation**: Warm ivory/off-white background (`#fafaf8`), crisp white surfaces, rich ink-black headings (`#111111`), and subtle border dividers (`#eae8e1`).
 - **Editorial Typography**: Pairing of modern sans-serif (`Plus Jakarta Sans`) with elegant serif accents (`Playfair Display`) for headings and philosophical statements.
@@ -17,7 +17,7 @@ Forma is an editorial, minimalist consumer storefront crafted for modern worksta
 
 ---
 
-## 🧭 Implemented Routes & Visual Layouts
+##  Implemented Routes & Visual Layouts
 
 | Route | Component | Highlights of Phase 2 Experience |
 | :--- | :--- | :--- |
@@ -29,7 +29,7 @@ Forma is an editorial, minimalist consumer storefront crafted for modern worksta
 
 ---
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 - **Build Tool**: [Vite 8](https://vite.dev/) — High-speed modern bundler with Hot Module Replacement (HMR).
 - **Frontend Framework**: [React 19](https://react.dev/) — Functional components with hooks.
@@ -41,7 +41,7 @@ Forma is an editorial, minimalist consumer storefront crafted for modern worksta
 
 ---
 
-## 📂 Project Architecture
+##  Project Architecture
 
 ```text
 E-commerce codeAlpha/
@@ -82,7 +82,7 @@ E-commerce codeAlpha/
 
 ---
 
-## 🚀 Prerequisites & Installation
+##  Prerequisites & Installation
 
 ### Prerequisites
 
@@ -101,7 +101,7 @@ E-commerce codeAlpha/
 
 ---
 
-## ⚠️ Current Scope & Limitations
+##  Current Scope & Limitations
 
 1. **Centralized Mock Data**: Products and category metadata are stored in `src/data/products.js`. No live external database or REST API is connected in this visual phase.
 2. **No Backend or Database**: Express/Node.js endpoints and MongoDB are deferred to later phases.
